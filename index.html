@@ -1,0 +1,1701 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ja"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;FOCUS // Industrial Console (Symmetric Cockpit Edition)&lt;/title&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="apple-mobile-web-app-status-bar-style" content="default"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="apple-mobile-web-app-title" content="FOCUS"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Kosugi&amp;family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 電子セグメント専用フォント (DSEG7 &amp; DSEG14) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dseg@0.46.0/css/dseg.css"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link id="dynamic-favicon" rel="icon" href=""&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link id="dynamic-apple-icon" rel="apple-touch-icon" href=""&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link id="dynamic-manifest" rel="manifest" href=""&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* 全体のフォント定義：英数字はMontserrat、日本語はKosugi */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Montserrat', 'Kosugi', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #eaecf0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #1a1b1e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>-webkit-font-smoothing: antialiased;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: -0.01em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* 白基調 ジウジアーロ・インダストリアル 外装 */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.white-industrial-card {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #d0d4dc;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 2px solid #b4b9c5;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.giugiaro-red-line {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #ff3311;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 6px rgba(255, 51, 17, 0.5);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* サテライト・タクタイルスイッチ */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tactile-switch {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: all 0.06s cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 2px 0 #c2c6d2, 0 3px 6px rgba(0,0,0,0.04);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tactile-switch:active:not(:disabled) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform: translateY(2px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 0 transparent;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* 漆黒（Jet Black）精密メーターパネル */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.piazza-jet-black-panel {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #000000;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 2px solid #161a22;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: inset 0 3px 24px rgba(0, 0, 0, 1), 0 2px 6px rgba(0, 0, 0, 0.08);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* 漆黒に沈む極薄シアン方眼グリッド */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cockpit-grid-bg {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-image:<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>linear-gradient(to right, rgba(0, 255, 204, 0.04) 1px, transparent 1px),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>linear-gradient(to bottom, rgba(0, 255, 204, 0.04) 1px, transparent 1px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-size: 16px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* タイマー部：グリーン成型ベゼル */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.piazza-speed-bezel {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #020305;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 2px solid #00ff66;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 14px rgba(0, 255, 102, 0.35), inset 0 0 16px rgba(0, 0, 0, 0.95);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* 左右完全シンメトリー・サブ計器ボックス */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.piazza-sub-bay {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #040507;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #141820;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* 電子7セグメントフォント */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.vfd-segment {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'DSEG7-Classic', monospace;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-style: italic;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* 電子14セグメントフォント */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.vfd-segment-14 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'DSEG14-Classic', monospace;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-style: italic;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* 蛍光グリーン VFD（主役：タイマー） */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.vfd-green-glow {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #00ff66;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-shadow: 0 0 12px rgba(0, 255, 102, 0.9), 0 0 26px rgba(0, 255, 102, 0.45);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.vfd-green-ghost {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: rgba(0, 255, 102, 0.06);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* レッド VFD（残りタスク数 ＆ MAIN/SUB/LEFTインジケーター） */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.vfd-red-glow {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #ff2233;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-shadow: 0 0 10px rgba(255, 34, 51, 0.9), 0 0 22px rgba(255, 34, 51, 0.45);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.vfd-red-ghost {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: rgba(255, 34, 51, 0.07);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-shadow: none !important;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* オレンジ VFD（時計・日付・曜日・AM/PM表示） */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.vfd-orange-glow {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #ff7700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-shadow: 0 0 10px rgba(255, 119, 0, 0.9), 0 0 22px rgba(255, 119, 0, 0.45);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.vfd-orange-ghost {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: rgba(255, 119, 0, 0.06);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* 最前線LEDチップの点滅 */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@keyframes ledChipBlink {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>0%, 100% {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>filter: drop-shadow(0 0 8px currentColor);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>50% {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity: 0.15;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>filter: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.led-blinking {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>animation: ledChipBlink 0.75s ease-in-out infinite;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="min-h-screen flex flex-col justify-between p-3.5 sm:p-4 max-w-md mx-auto select-none pb-6"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 1. トップ計器バー --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;header class="flex justify-between items-center px-2 mb-2 font-mono text-xs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="flex items-center gap-2 font-bold"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="w-2 h-4 rounded-sm giugiaro-red-line"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span id="live-date" class="text-slate-500"&gt;----.--.-- ---&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span id="live-clock" class="text-[#1a1b1e] tabular-nums font-bold tracking-wider"&gt;00:00:00&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-md border border-[#d0d4dc] shadow-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="text-[9px] font-extrabold text-slate-400"&gt;STREAK&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span id="streak-count" class="text-xs font-black text-[#1a1b1e] font-mono"&gt;0&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 2. メインクラスター（左右完全シンメトリー・コックピットパネル） --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;main class="white-industrial-card rounded-3xl p-4 sm:p-5 text-center flex-1 flex flex-col justify-between my-2 relative overflow-hidden"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 優先度警告インジケーター --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="gatekeeper-warning" class="hidden bg-amber-500/10 border border-amber-500/30 text-amber-700 text-xs px-3 py-1.5 rounded-xl font-bold flex items-center justify-center gap-1.5 mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;⚠️&lt;/span&gt; ROUTINE PRIORITY ENGAGED</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 上部ステータスバー --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="flex justify-between items-center px-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span id="status-badge" class="text-[9px] font-extrabold tracking-widest text-[#0055ff] bg-blue-50 border border-blue-200 px-3 py-0.5 rounded-full uppercase"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>● ACTIVE FOCUS</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span id="target-deadline-badge" class="text-[10px] font-mono font-bold text-slate-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>15 MIN SPAN</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- タスクタイトル部 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="my-auto py-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1 id="current-task-title" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#1a1b1e] leading-tight break-words px-2 uppercase"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>NO ACTIVE OPERATIONS</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p id="cheer-message" class="text-xs font-medium text-slate-400 mt-0.5 font-mono"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>SYSTEM STANDBY // AWAITING OPERATION</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 漆黒（Jet Black）の計器パネル --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="piazza-jet-black-panel cockpit-grid-bg rounded-2xl p-3.5 my-1 text-left relative overflow-hidden select-none space-y-2.5"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">      </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- 【1. 上部】折れ線 粒LEDスケール（100% ➔ 0%） --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="space-y-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex justify-between items-center text-[8px] font-mono text-slate-400 px-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="flex items-center gap-1.5 font-bold text-slate-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-pulse"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>REMAINING SCALE // 100% ➔ 0%</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span id="progress-pct-label" class="text-slate-300 font-bold font-mono"&gt;100%&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- 44連 粒LED 折れ線バーグラフ --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="relative w-full h-14"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;svg viewBox="0 0 350 70" class="w-full h-full absolute inset-0 pointer-events-none"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;g stroke="#1e2530" stroke-width="1.2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;line x1="20" y1="52" x2="20" y2="57" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;line x1="60" y1="44" x2="60" y2="49" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;line x1="105" y1="35" x2="105" y2="40" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;line x1="150" y1="26" x2="150" y2="31" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;line x1="180" y1="18" x2="180" y2="23" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;line x1="220" y1="18" x2="220" y2="23" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;line x1="260" y1="18" x2="260" y2="23" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;line x1="300" y1="18" x2="300" y2="23" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;line x1="335" y1="18" x2="335" y2="23" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/g&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;g font-family="Montserrat, monospace" font-size="7" fill="#4d5f75" font-weight="700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;text x="14" y="65"&gt;100%&lt;/text&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;text x="96" y="50"&gt;75%&lt;/text&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;text x="170" y="32"&gt;50%&lt;/text&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;text x="250" y="32"&gt;25%&lt;/text&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;text x="325" y="32"&gt;0%&lt;/text&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/g&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;path d="M 20 52 L 180 18 L 335 18" fill="none" stroke="#0d1117" stroke-width="5" stroke-linecap="round" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;g id="led-matrix-chips"&gt;&lt;/g&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- 【2. 中央】メイン・タイマー --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="piazza-speed-bezel w-full py-2.5 px-3 flex flex-col items-center justify-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="w-full flex justify-between items-center text-[8px] font-mono text-[#00ff66]/70 px-1 mb-0.5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="flex items-center gap-1 font-bold"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="w-1.5 h-1.5 bg-[#00ff66] rounded-sm"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>FOCUS DURATION</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span id="timer-unit-label" class="text-slate-400 font-bold uppercase tracking-wider"&gt;MIN:SEC&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="relative w-full flex items-center justify-center py-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="vfd-segment vfd-green-ghost text-5xl sm:text-6xl font-bold tracking-widest select-none absolute"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>88:88</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div id="time-left" class="vfd-segment vfd-green-glow text-5xl sm:text-6xl font-bold tracking-widest select-none z-10 tabular-nums"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--:--</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="w-1/2 h-[2px] bg-[#ff3311] rounded-full mt-0.5 shadow-[0_0_6px_#ff3311]"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- 【3. 下部】完全シンメトリー（50:50）インライン・サブ計器 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="grid grid-cols-2 gap-2 pt-0.5"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- 左【50%】：★TASKS据え置き ＋ MAIN/SUB ＆ セグメントLEFT（赤色VFD） --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="piazza-sub-bay rounded-xl px-2.5 py-1.5 flex flex-col justify-between border-l-2 border-l-[#ff2233]"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">          </span></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- 上段：TASKS（据え置き） ＆ QUEUE --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex justify-between items-center text-[7.5px] font-mono font-bold text-slate-400 uppercase"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="text-[#ff4455] tracking-wider"&gt;TASKS&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="text-slate-500 tracking-wider"&gt;QUEUE&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- 下段：MAIN / SUB ＋ ★セグメントLEFT ＋ 残数カウント7セグ --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex items-center justify-between my-auto pt-1"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-1.5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- MAIN / SUB 14セグメント --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="flex flex-col gap-0.5 text-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="seg-status-main" class="vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300"&gt;MAIN&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="seg-status-sub" class="vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300"&gt;SUB&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- ★ セグメント表記の LEFT (14セグメント) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="relative flex items-baseline"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="vfd-segment-14 vfd-red-ghost text-[8.5px] font-bold select-none tracking-widest absolute right-0"&gt;~~~~&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="seg-status-left" class="vfd-segment-14 text-[8.5px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300"&gt;LEFT&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- 残りタスク数（7セグメント） --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="relative flex items-baseline"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="vfd-segment vfd-red-ghost text-2xl font-bold select-none absolute right-0"&gt;88&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span id="seg-remaining-tasks" class="vfd-segment vfd-red-glow text-2xl font-bold select-none z-10 tabular-nums"&gt;00&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- 右【50%】：セグメント日付(MM.DD) ＆ 曜日(14セグ) ＆ AM/PM ＆ 12時間時計（オレンジVFD） --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="piazza-sub-bay rounded-xl px-2 py-1.5 flex flex-col justify-between border-r-2 border-r-[#ff7700]"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">          </span></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- 上段：LOCAL TIME ＆ CLOCK --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex justify-between items-center text-[7.5px] font-mono font-bold text-slate-400 uppercase"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="text-[#ff8800] tracking-wider"&gt;LOCAL TIME&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="text-slate-500 tracking-wider"&gt;CLOCK&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- 下段：日付(MM.DD) ＋ 曜日(14セグ) ＋ AM/PM ＋ 12時間時計 (HH:MM:SS) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex items-center justify-between gap-1 my-auto pt-1"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-baseline gap-1 shrink-0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- 電子7セグ日付表示 (MM.DD) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="relative flex items-baseline"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="vfd-segment vfd-orange-ghost text-[9px] font-bold tracking-wider select-none absolute right-0"&gt;88.88&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="sub-clock-date" class="vfd-segment vfd-orange-glow text-[9px] font-bold tracking-wider select-none z-10 tabular-nums"&gt;00.00&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- 電子14セグ曜日表示 (FRI, SATなど) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="relative flex items-baseline"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="vfd-segment-14 vfd-orange-ghost text-[8.5px] font-bold select-none absolute right-0"&gt;~~~&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="sub-clock-day-seg" class="vfd-segment-14 vfd-orange-glow text-[8.5px] font-bold select-none z-10 uppercase"&gt;---&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-1 shrink-0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- AM/PM 14セグメント --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="relative flex items-baseline"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="vfd-segment-14 vfd-orange-ghost text-[8px] font-bold select-none absolute right-0"&gt;~~&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="sub-clock-ampm" class="vfd-segment-14 vfd-orange-glow text-[8px] font-bold select-none z-10"&gt;AM&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- 12時間 電子7セグ時刻 (HH:MM:SS) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="relative flex items-baseline justify-end"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="vfd-segment vfd-orange-ghost text-[10px] sm:text-[11px] font-bold tracking-wider select-none absolute right-0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>88:88:88</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="sub-clock-time" class="vfd-segment vfd-orange-glow text-[10px] sm:text-[11px] font-bold tracking-wider select-none z-10 tabular-nums"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>12:00:00</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- メーター直下スイッチ --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="action-buttons" class="grid grid-cols-2 gap-2.5 w-full hidden pt-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button onclick="extendTime(5)" class="tactile-switch bg-white hover:bg-slate-50 text-slate-700 font-bold py-3 rounded-xl border border-[#d0d4dc] text-xs flex items-center justify-center gap-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;+5m🕐&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button onclick="openCompletionModal()" class="tactile-switch bg-[#1a1b1e] hover:bg-black text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center shadow-md tracking-wider uppercase"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;Complete&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 3. ジウジアーロ・サテライトクラスタースイッチ群 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="space-y-2 mt-1"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- ① 【MODE SATELLITE POD】 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="white-industrial-card rounded-2xl p-1.5 flex gap-1.5 font-mono shadow-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button onclick="openRoutineModal()" class="tactile-switch flex-1 bg-[#f4f5f8] hover:bg-white text-slate-700 py-2 px-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border border-[#d0d4dc] font-sans"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;⚙️&lt;/span&gt; Routine</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button onclick="toggleQueueList()" class="tactile-switch flex-1 bg-[#f4f5f8] hover:bg-white text-slate-700 py-2 px-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border border-[#d0d4dc] font-sans"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;📋&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span id="queue-badge"&gt;QUEUE: 0&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="text-[9px] text-[#ff3311]"&gt;▼&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button id="notify-btn" onclick="requestNotification()" class="tactile-switch bg-[#f4f5f8] hover:bg-white text-slate-500 hover:text-[#0055ff] py-2 px-3.5 rounded-xl text-xs font-bold border border-[#d0d4dc] transition" title="通知の許可"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>🔔</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 待機キュードロワー --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="queue-drawer" class="hidden white-industrial-card rounded-2xl p-3.5 text-xs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="flex justify-between items-center mb-2.5 font-bold text-slate-400 text-[10px] uppercase font-mono"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;// QUEUED OPERATIONS&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="toggleQueueList()" class="hover:text-black font-sans"&gt;✕ 閉じる&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="queue-items-container" class="space-y-1.5 max-h-48 overflow-y-auto pr-1"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- ② 【INJECTION CONSOLE POD】 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="white-industrial-card rounded-2xl p-3 space-y-2.5 shadow-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="flex gap-1.5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input id="input-task-title" type="text" placeholder="仕事を投入（例: 提案書の仕上げ）"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">               </span>class="flex-1 bg-[#f4f5f8] border border-[#d0d4dc] rounded-xl px-3 py-2.5 text-xs text-[#1a1b1e] placeholder-slate-400 font-medium focus:border-[#0055ff] focus:bg-white transition outline-none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="addNewTask()" class="tactile-switch bg-[#1a1b1e] hover:bg-black text-white font-bold px-4 py-2.5 rounded-xl text-xs shadow-sm flex items-center gap-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span&gt;Go🗓️&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="grid grid-cols-12 gap-1.5 text-[10px] font-mono"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="col-span-5 bg-[#f4f5f8] border border-[#d0d4dc] rounded-xl p-1 flex items-center justify-between gap-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button type="button" onclick="setTargetDay(0)" id="day-btn-0" class="tactile-switch flex-1 py-1 bg-[#1a1b1e] text-white font-bold rounded-lg font-sans text-center"&gt;今日&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button type="button" onclick="setTargetDay(1)" id="day-btn-1" class="tactile-switch flex-1 py-1 bg-white text-slate-600 font-bold rounded-lg border border-[#d0d4dc] font-sans text-center"&gt;明日&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="input-custom-date" type="date" onchange="setCustomDate()" class="bg-white border border-[#d0d4dc] rounded-lg px-1 py-0.5 text-[9px] text-slate-700 outline-none w-16 font-mono" title="日付指定"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="col-span-7 bg-[#f4f5f8] border border-[#d0d4dc] rounded-xl p-1 flex items-center justify-between gap-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button type="button" onclick="setQuickTime(5)" class="tactile-switch flex-1 py-1 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-lg border border-[#d0d4dc] text-center"&gt;5m&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button type="button" onclick="setQuickTime(15)" class="tactile-switch flex-1 py-1 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-lg border border-[#d0d4dc] text-center"&gt;15m&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button type="button" onclick="setQuickTime(30)" class="tactile-switch flex-1 py-1 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-lg border border-[#d0d4dc] text-center"&gt;30m&lt;/button&gt;</p>
+<p class="p2"><span class="Apple-converted-space">          </span></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex items-center gap-0.5 bg-white border border-[#d0d4dc] px-1 py-0.5 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="text-slate-400 text-[9px]"&gt;⏰&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input id="input-task-time" type="time" onchange="onTimeDeadlineChange()" class="bg-transparent text-[#1a1b1e] outline-none font-bold text-[9.5px] w-12 cursor-pointer" title="終了予定時刻を指定"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 4. モーダル群 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="routine-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="white-industrial-card rounded-3xl p-5 max-w-sm w-full shadow-2xl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="flex justify-between items-center mb-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="text-xs font-bold text-[#1a1b1e] flex items-center gap-1.5 font-sans"&gt;&lt;span&gt;⚙️&lt;/span&gt; Routine Settings&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="closeRoutineModal()" class="text-slate-400 hover:text-black"&gt;✕&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="flex gap-1 mb-2 text-xs font-bold font-mono"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="selectRoutineDay(1)" id="tab-day-1" class="flex-1 py-1 rounded bg-[#1a1b1e] text-white"&gt;月&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="selectRoutineDay(2)" id="tab-day-2" class="flex-1 py-1 rounded bg-[#f4f5f8] text-slate-600"&gt;火&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="selectRoutineDay(3)" id="tab-day-3" class="flex-1 py-1 rounded bg-[#f4f5f8] text-slate-600"&gt;水&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="selectRoutineDay(4)" id="tab-day-4" class="flex-1 py-1 rounded bg-[#f4f5f8] text-slate-600"&gt;木&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="selectRoutineDay(5)" id="tab-day-5" class="flex-1 py-1 rounded bg-[#f4f5f8] text-slate-600"&gt;金&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="selectRoutineDay(6)" id="tab-day-6" class="flex-1 py-1 rounded bg-[#f4f5f8] text-slate-600"&gt;土&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="selectRoutineDay(0)" id="tab-day-0" class="flex-1 py-1 rounded bg-[#f4f5f8] text-slate-600"&gt;日&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;textarea id="routine-textarea" rows="4" class="w-full bg-[#f4f5f8] border border-[#d0d4dc] rounded-xl p-2.5 text-xs text-[#1a1b1e] font-medium focus:border-[#0055ff] outline-none"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button onclick="saveRoutineForDay()" class="tactile-switch w-full mt-2.5 bg-[#0055ff] text-white font-bold py-2.5 rounded-xl text-xs"&gt;設定を保存 ✔&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- タスク完了モーダル（★シンプルな英文表記 CONFIRM &amp; PROCEED） --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="check-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="white-industrial-card rounded-3xl p-6 text-center max-w-sm w-full shadow-2xl"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">      </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- 2段改行見出し --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="praise-text" class="mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="text-lg sm:text-xl font-black text-[#1a1b1e] tracking-tight uppercase leading-snug"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>TARGET ACHIEVED</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="block text-xs font-bold text-slate-400 tracking-wider mt-0.5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>素晴らしい集中力でした</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="text-[11px] text-slate-500 mb-4 font-mono"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>SEQUENCE COMPLETE // CONFIRM CHECKLIST</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="text-left bg-[#f4f5f8] rounded-xl p-3 mb-4 border border-[#d0d4dc]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex justify-between items-center mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="text-[10px] font-bold text-slate-400 font-mono tracking-wider"&gt;// CHECKLIST&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button onclick="addNewCheckItem()" class="text-[11px] font-bold text-[#0055ff] hover:underline flex items-center gap-0.5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;＋&lt;/span&gt; 項目追加</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="work-checklist-container" class="space-y-1.5 text-xs text-[#1a1b1e] max-h-40 overflow-y-auto pr-1"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p id="checklist-warning" class="text-[10px] text-amber-600 font-bold mb-2 hidden"&gt;⚠️ すべての項目にチェックを入れてください&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ★ シンプルな英文表記に変更 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button id="finish-task-btn" onclick="finishTaskAndCloseModal()" class="tactile-switch w-full bg-[#1a1b1e] text-white font-bold py-3 rounded-xl text-xs tracking-wider uppercase transition duration-150"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>CONFIRM &amp;amp; PROCEED</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 5. 音響エンジン＆ローカル通知エンジン --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let audioCtx = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let silkyReverbBuffer = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let swRegistration = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let hasNotifiedPendingOnClose = false;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function escapeHtml(str) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return String(str)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replace(/&amp;/g, '&amp;amp;')</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replace(/&lt;/g, '&amp;lt;')</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replace(/&gt;/g, '&amp;gt;')</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replace(/"/g, '&amp;quot;')</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.replace(/'/g, '&amp;#39;');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function initAudioContext() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!audioCtx) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>audioCtx = new (window.AudioContext || window.webkitAudioContext)();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (audioCtx.state === 'suspended') {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>audioCtx.resume();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return audioCtx;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('touchstart', initAudioContext, { once: true });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('click', initAudioContext, { once: true });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getSilkyReverbBuffer(ctx) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (silkyReverbBuffer) return silkyReverbBuffer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const rate = ctx.sampleRate || 44100;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const length = Math.floor(rate * 1.6);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const decay = 2.4;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const buffer = ctx.createBuffer(2, length, rate);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const l = buffer.getChannelData(0), r = buffer.getChannelData(1);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; length; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const factor = Math.exp((-i / length) * decay);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const damp = 1.0 - (i / length) * 0.4;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>l[i] = (Math.random() * 2 - 1) * factor * damp;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>r[i] = (Math.random() * 2 - 1) * factor * damp;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>silkyReverbBuffer = buffer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.error("Reverb error:", e);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return silkyReverbBuffer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function playWarmTap() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const ctx = initAudioContext();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const now = ctx.currentTime;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const voices = [</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ freq: 97.99,<span class="Apple-converted-space">  </span>vol: 0.16 },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ freq: 130.81, vol: 0.14 },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ freq: 164.81, vol: 0.13 }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const conv = ctx.createConvolver();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const rBuf = getSilkyReverbBuffer(ctx);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const wet = ctx.createGain();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (rBuf) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>conv.buffer = rBuf;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>wet.gain.setValueAtTime(0.28, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>conv.connect(wet);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>wet.connect(ctx.destination);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>voices.forEach((v) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const osc1 = ctx.createOscillator();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const osc2 = ctx.createOscillator();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const filter = ctx.createBiquadFilter();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const gain = ctx.createGain();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.type = "sawtooth"; osc1.frequency.setValueAtTime(v.freq, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc2.type = "sawtooth"; osc2.frequency.setValueAtTime(v.freq * 1.008, now);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.type = "lowpass"; filter.Q.setValueAtTime(3.2, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.frequency.setValueAtTime(150, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.frequency.linearRampToValueAtTime(1400, now + 0.04);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.frequency.exponentialRampToValueAtTime(180, now + 0.3);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>gain.gain.setValueAtTime(0.001, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>gain.gain.linearRampToValueAtTime(v.vol, now + 0.025);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.36);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.connect(filter); osc2.connect(filter); filter.connect(gain);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>gain.connect(ctx.destination);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (rBuf) gain.connect(conv);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.start(now); osc2.start(now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.stop(now + 0.4); osc2.stop(now + 0.4);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (err) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.error("Audio error:", err);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function playWarmMajorBrass() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const ctx = initAudioContext();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const now = ctx.currentTime;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const notes = [65.41, 98.00, 164.81, 246.94, 293.66];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const conv = ctx.createConvolver();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const rBuf = getSilkyReverbBuffer(ctx);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const wet = ctx.createGain();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (rBuf) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>conv.buffer = rBuf;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>wet.gain.setValueAtTime(0.35, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>conv.connect(wet);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>wet.connect(ctx.destination);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>notes.forEach((freq, idx) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const osc1 = ctx.createOscillator(), osc2 = ctx.createOscillator();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const filter = ctx.createBiquadFilter(), gain = ctx.createGain();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.type = "sawtooth"; osc1.frequency.setValueAtTime(freq, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc2.type = "sawtooth"; osc2.frequency.setValueAtTime(freq * 1.007, now);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.type = "lowpass"; filter.Q.setValueAtTime(3.8, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.frequency.setValueAtTime(140, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.frequency.linearRampToValueAtTime(1600, now + 0.045);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.frequency.exponentialRampToValueAtTime(220, now + 0.55);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>gain.gain.setValueAtTime(0.001, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>gain.gain.linearRampToValueAtTime(idx === 0 ? 0.22 : 0.08, now + 0.035);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.65);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.connect(filter); osc2.connect(filter); filter.connect(gain);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>gain.connect(ctx.destination);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (rBuf) gain.connect(conv);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.start(now); osc2.start(now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.stop(now + 0.68); osc2.stop(now + 0.68);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (err) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.error("Audio error:", err);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function playCGHEAmbient() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const ctx = initAudioContext();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const now = ctx.currentTime;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const notes = [</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ freq: 65.41,<span class="Apple-converted-space">  </span>vol: 0.22 },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ freq: 196.00, vol: 0.17 },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ freq: 246.94, vol: 0.15 },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{ freq: 329.63, vol: 0.16 }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const conv = ctx.createConvolver();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const rBuf = getSilkyReverbBuffer(ctx);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const wet = ctx.createGain();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (rBuf) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>conv.buffer = rBuf;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>wet.gain.setValueAtTime(0.55, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>conv.connect(wet);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>wet.connect(ctx.destination);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>notes.forEach((v) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const osc1 = ctx.createOscillator(), osc2 = ctx.createOscillator();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const filter = ctx.createBiquadFilter(), voiceGain = ctx.createGain();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.type = "sawtooth"; osc1.frequency.setValueAtTime(v.freq, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc2.type = "sawtooth"; osc2.frequency.setValueAtTime(v.freq * 1.006, now);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.type = "lowpass"; filter.Q.setValueAtTime(2.2, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.frequency.setValueAtTime(140, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.frequency.linearRampToValueAtTime(1400, now + 0.35);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>filter.frequency.exponentialRampToValueAtTime(160, now + 4.2);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>voiceGain.gain.setValueAtTime(0.0001, now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>voiceGain.gain.linearRampToValueAtTime(v.vol, now + 0.25);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>voiceGain.gain.exponentialRampToValueAtTime(0.00001, now + 4.5);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.connect(filter); osc2.connect(filter); filter.connect(voiceGain);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>voiceGain.connect(ctx.destination);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (rBuf) voiceGain.connect(conv);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.start(now); osc2.start(now);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>osc1.stop(now + 4.6); osc2.stop(now + 4.6);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (err) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.error("Audio error:", err);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ジウジアーロ・インダストリアルデザインを意識したモノクロ・カレンダーアイコン＆PWAマニフェスト生成</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function generateBrightIcon() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const canvas = document.createElement('canvas');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>canvas.width = 180; canvas.height = 180;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const ctx = canvas.getContext('2d');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// ベース筐体（マットライトグレー＆精密ベゼル）</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fillStyle = '#f2f3f5';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.beginPath();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.roundRect(0, 0, 180, 180, 40);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fill();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.strokeStyle = '#c8cdd6';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.lineWidth = 4;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.beginPath();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.roundRect(2, 2, 176, 176, 38);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.stroke();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// カレンダー下部の立体タクタイル・ベース</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fillStyle = '#b4b9c5';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.beginPath();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.roundRect(26, 36, 128, 118, 14);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fill();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// カレンダー本体（白）</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fillStyle = '#ffffff';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.beginPath();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.roundRect(26, 32, 128, 118, 14);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fill();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// ヘッダー帯（漆黒）を本体角丸でクリッピング</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.save();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.beginPath();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.roundRect(26, 32, 128, 118, 14);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.clip();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fillStyle = '#16181c';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fillRect(26, 32, 128, 34);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// 計器風の極細スリットライン</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fillStyle = '#4b5563';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.fillRect(41, 56, 98, 2);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.restore();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// カレンダー外枠（シャープな黒縁）</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.strokeStyle = '#16181c';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.lineWidth = 4;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.beginPath();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.roundRect(26, 32, 128, 118, 14);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ctx.stroke();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// 左右シンメトリーのバインダーピン</p>
+<p class="p1"><span class="Apple-converted-space">      </span>[56, 114].forEach((px) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ctx.fillStyle = '#f2f3f5';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ctx.beginPath();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ctx.roundRect(px - 3, 21, 16, 24, 6);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ctx.fill();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>ctx.fillStyle = '#16181c';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ctx.beginPath();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ctx.roundRect(px, 24, 10, 18, 4);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ctx.fill();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// ミニマルな 4x3 モノクロ・カレンダーグリッド</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const cols = 4, rows = 3;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const cellW = 20, cellH = 14, gapX = 6, gapY = 6;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const startX = 41, startY = 78;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (let r = 0; r &lt; rows; r++) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (let c = 0; c &lt; cols; c++) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const x = startX + c * (cellW + gapX);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const y = startY + r * (cellH + gapY);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const isActiveDay = (r === 1 &amp;&amp; c === 2);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (isActiveDay) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.fillStyle = '#16181c';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.beginPath();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.roundRect(x, y, cellW, cellH, 3);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.fill();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// フォーカス日を示す白い精密センタードット</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.fillStyle = '#ffffff';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.fillRect(x + 8, y + 5, 4, 4);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.fillStyle = (r === 0 &amp;&amp; c &lt; 2) ? '#e6e9ef' : '#cfd5df';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.beginPath();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.roundRect(x, y, cellW, cellH, 3);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.fill();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const iconUrl = canvas.toDataURL('image/png');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('dynamic-favicon').href = iconUrl;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('dynamic-apple-icon').href = iconUrl;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const manifest = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>name: "FOCUS // Industrial Console",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>short_name: "FOCUS",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>start_url: location.protocol.startsWith('http') ? location.href.split('#')[0] : ".",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>display: "standalone",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>background_color: "#eaecf0",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>theme_color: "#eaecf0",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>icons: [</p>
+<p class="p1"><span class="Apple-converted-space">          </span>{</p>
+<p class="p1"><span class="Apple-converted-space">            </span>src: iconUrl,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>sizes: "180x180",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>type: "image/png"</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>]</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const manifestEl = document.getElementById('dynamic-manifest');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (manifestEl) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>manifestEl.href = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifest));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>generateBrightIcon();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Service Worker 登録（iOS PWA通知用）</p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function registerServiceWorker() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!('serviceWorker' in navigator)) return null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!location.protocol.startsWith('http')) return null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>swRegistration = await navigator.serviceWorker.register('./sw.js');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return swRegistration;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.warn('ServiceWorker registration failed:', e);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// iOS PWA (ServiceWorkerRegistration.showNotification) ＆ デスクトップ両対応通知送信</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function sendSystemNotification(title, body, options = {}) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!("Notification" in window) || Notification.permission !== "granted") return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const iconUrl = document.getElementById('dynamic-favicon')?.href || '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const payload = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>icon: iconUrl,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>...options</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (swRegistration &amp;&amp; typeof swRegistration.showNotification === 'function') {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>swRegistration.showNotification(title, payload).catch((e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>console.error("SW Notification Error:", e);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>});</p>
+<p class="p1"><span class="Apple-converted-space">          </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if ('serviceWorker' in navigator) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>navigator.serviceWorker.getRegistration().then((reg) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (reg &amp;&amp; typeof reg.showNotification === 'function') {</p>
+<p class="p1"><span class="Apple-converted-space">              </span>return reg.showNotification(title, payload);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>new Notification(title, payload);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}).catch(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>new Notification(title, payload);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>});</p>
+<p class="p1"><span class="Apple-converted-space">          </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>new Notification(title, payload);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.error("Notification Error:", e);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 残り時間別のプッシュ通知オフセット（分前）判定</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ・残2時間以上: 60分前, 30分前, 15分前, 5分前</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ・残1時間以上: 30分前, 15分前, 5分前</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ・残30分以上: 15分前, 5分前</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ・残10分以上: 5分前, 0分0秒</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getNotificationOffsetsForRemainingMs(remainingMs) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const remainingMins = remainingMs / 60000;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (remainingMins &gt;= 120) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return [60, 30, 15, 5];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (remainingMins &gt;= 60) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return [30, 15, 5];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (remainingMins &gt;= 30) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return [15, 5];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (remainingMins &gt;= 10) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return [5, 0];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (remainingMins &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return [0];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 未完了タスクの段階的ローカル通知スケジュール生成</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function buildRemainingNotificationSchedule(now = Date.now()) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const todayStr = getFormattedDate(0);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const pendingTasks = tasks.filter(t =&gt; t.date === todayStr &amp;&amp; t.targetTime &amp;&amp; t.targetTime &gt; now);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const schedule = [];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>pendingTasks.forEach((task) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const remainingMs = task.targetTime - now;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const offsets = getNotificationOffsetsForRemainingMs(remainingMs);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>offsets.forEach((offsetMin) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const sendAt = task.targetTime - offsetMin * 60000;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (sendAt &gt; now) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const body = offsetMin &gt; 0</p>
+<p class="p1"><span class="Apple-converted-space">              </span>? `未完了タスクあり（残り${offsetMin}分）: ${task.title}`</p>
+<p class="p1"><span class="Apple-converted-space">              </span>: `未完了タスクあり（残り時間0分0秒）: ${task.title}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>schedule.push({</p>
+<p class="p1"><span class="Apple-converted-space">              </span>id: `${task.id}-${offsetMin}`,</p>
+<p class="p1"><span class="Apple-converted-space">              </span>taskId: task.id,</p>
+<p class="p1"><span class="Apple-converted-space">              </span>offsetMin,</p>
+<p class="p1"><span class="Apple-converted-space">              </span>sendAt,</p>
+<p class="p1"><span class="Apple-converted-space">              </span>title: "FOCUS",</p>
+<p class="p1"><span class="Apple-converted-space">              </span>body,</p>
+<p class="p1"><span class="Apple-converted-space">              </span>tag: `focus-task-${task.id}-${offsetMin}`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>return schedule.sort((a, b) =&gt; a.sendAt - b.sendAt);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// TimestampTrigger 対応環境でのローカル予約通知登録</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function syncLocalNotificationTriggers() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!("Notification" in window) || Notification.permission !== "granted") return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (</p>
+<p class="p1"><span class="Apple-converted-space">        </span>!swRegistration ||</p>
+<p class="p1"><span class="Apple-converted-space">        </span>typeof swRegistration.showNotification !== 'function' ||</p>
+<p class="p1"><span class="Apple-converted-space">        </span>!('showTrigger' in Notification.prototype) ||</p>
+<p class="p1"><span class="Apple-converted-space">        </span>typeof TimestampTrigger === 'undefined'</p>
+<p class="p1"><span class="Apple-converted-space">      </span>) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const schedule = buildRemainingNotificationSchedule(Date.now());</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const iconUrl = document.getElementById('dynamic-favicon')?.href || '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>schedule.forEach((item) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>swRegistration.showNotification(item.title, {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>body: item.body,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>icon: iconUrl,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>tag: item.tag,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renotify: true,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showTrigger: new TimestampTrigger(item.sendAt),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>data: { url: location.href }</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}).catch(() =&gt; {});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} catch (_) {}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// クロック更新（トップバー：24時間 / メーター内：12時間 ＆ AM/PM ＆ 日付MM.DD ＆ 曜日14セグ）</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateClock() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const now = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const y = now.getFullYear();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const m = String(now.getMonth() + 1).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const d = String(now.getDate()).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const day = dayNames[now.getDay()];</p>
+<p class="p2"><span class="Apple-converted-space">      </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const time24Str = now.toLocaleTimeString('ja-JP', { hour12: false });</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('live-date').innerText = `${y}.${m}.${d} ${day}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('live-clock').innerText = time24Str;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>let rawHours = now.getHours();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const ampm = rawHours &gt;= 12 ? 'PM' : 'AM';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let hours12 = rawHours % 12;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>hours12 = hours12 ? hours12 : 12;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const hh = String(hours12).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const mm = String(now.getMinutes()).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const ss = String(now.getSeconds()).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const time12Str = `${hh}:${mm}:${ss}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const dateStr = `${m}.${d}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const subClockDate = document.getElementById('sub-clock-date');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const subClockDaySeg = document.getElementById('sub-clock-day-seg');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const subClockAmPm = document.getElementById('sub-clock-ampm');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const subClockTime = document.getElementById('sub-clock-time');</p>
+<p class="p2"><span class="Apple-converted-space">      </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (subClockDate) subClockDate.innerText = dateStr;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (subClockDaySeg) subClockDaySeg.innerText = day;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (subClockAmPm) subClockAmPm.innerText = ampm;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (subClockTime) subClockTime.innerText = time12Str;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setInterval(updateClock, 1000);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateClock();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const defaultWeeklyRoutines = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>0: ["来週のスケジュール確認", "体調管理・ストレッチ"],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>1: ["出勤打刻 &amp; 朝メール確認", "今週の優先タスク確認", "週次朝礼の参加"],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>2: ["出勤打刻 &amp; チャット未読返信", "進捗確認"],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>3: ["出勤打刻 &amp; チャット未読返信", "中だるみ防止・整理整頓"],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>4: ["出勤打刻 &amp; チャット未読返信", "明日の締め切り確認"],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>5: ["出勤打刻 &amp; チャット未読返信", "週報の作成・提出", "勤怠締め確認"],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>6: ["デスク片付け", "リフレッシュ"]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let weeklyRoutines = JSON.parse(localStorage.getItem('booster_weekly_routines')) || defaultWeeklyRoutines;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let editingDay = new Date().getDay();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function openRoutineModal() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmMajorBrass();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>selectRoutineDay(new Date().getDay());</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('routine-modal').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function closeRoutineModal() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('routine-modal').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function selectRoutineDay(dayIndex) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>editingDay = dayIndex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (let i = 0; i &lt; 7; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById(`tab-day-${i}`).className = (i === dayIndex) ? "flex-1 py-1 rounded bg-[#1a1b1e] text-white font-bold" : "flex-1 py-1 rounded bg-[#f4f5f8] text-slate-600 font-bold";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('routine-textarea').value = (weeklyRoutines[dayIndex] || []).join('\n');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function saveRoutineForDay() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmMajorBrass();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>weeklyRoutines[editingDay] = document.getElementById('routine-textarea').value.split('\n').map(s =&gt; s.trim()).filter(Boolean);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>localStorage.setItem('booster_weekly_routines', JSON.stringify(weeklyRoutines));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>closeRoutineModal();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>checkAndInjectDailyRoutines();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function checkAndInjectDailyRoutines() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const today = new Date().toDateString();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (localStorage.getItem('booster_last_routine_date') !== today) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const routinesForToday = weeklyRoutines[new Date().getDay()] || [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>routinesForToday.forEach(title =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>tasks.unshift({</p>
+<p class="p1"><span class="Apple-converted-space">            </span>id: Date.now() + Math.random(),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>title: title,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>type: 'main',</p>
+<p class="p1"><span class="Apple-converted-space">            </span>date: getFormattedDate(0),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>durationMins: 10,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>deadlineTime: null,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>targetTime: null,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>createdAt: Date.now()</p>
+<p class="p1"><span class="Apple-converted-space">          </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>localStorage.setItem('booster_last_routine_date', today);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveAndRefresh();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let targetDayOffset = 0, selectedCustomDate = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let defaultDurationMins = 15;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let specificDeadlineTime = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getFormattedDate(offsetDays) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const d = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>d.setDate(d.getDate() + offsetDays);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setTargetDay(offset) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>targetDayOffset = offset; selectedCustomDate = null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('input-custom-date').value = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('day-btn-0').className = offset === 0 ? "tactile-switch flex-1 py-1 bg-[#1a1b1e] text-white font-bold rounded-lg font-sans text-center" : "tactile-switch flex-1 py-1 bg-white text-slate-600 font-bold rounded-lg border border-[#d0d4dc] font-sans text-center";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('day-btn-1').className = offset === 1 ? "tactile-switch flex-1 py-1 bg-[#1a1b1e] text-white font-bold rounded-lg font-sans text-center" : "tactile-switch flex-1 py-1 bg-white text-slate-600 font-bold rounded-lg border border-[#d0d4dc] font-sans text-center";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setCustomDate() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const val = document.getElementById('input-custom-date').value;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (val) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>selectedCustomDate = val;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('day-btn-0').className = "tactile-switch flex-1 py-1 bg-white text-slate-600 font-bold rounded-lg border border-[#d0d4dc] font-sans text-center";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('day-btn-1').className = "tactile-switch flex-1 py-1 bg-white text-slate-600 font-bold rounded-lg border border-[#d0d4dc] font-sans text-center";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setQuickTime(mins) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>defaultDurationMins = mins;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>specificDeadlineTime = null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('input-task-time').value = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function onTimeDeadlineChange() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const val = document.getElementById('input-task-time').value;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>specificDeadlineTime = val || null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let tasks = JSON.parse(localStorage.getItem('booster_tasks')) || [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let streak = parseInt(localStorage.getItem('booster_streak') || '0', 10);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let timerInterval = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let hasNotifiedCurrentTask = false;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 上部折れ線バー幾何計算</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const LED_COUNT = 44;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const SLOPE_LEN = Math.sqrt(160 * 160 + 34 * 34);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const HORIZ_LEN = 155;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const TOTAL_LEN = SLOPE_LEN + HORIZ_LEN;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getLedCoordinates(t) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const dist = t * TOTAL_LEN;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (dist &lt;= SLOPE_LEN) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const localT = dist / SLOPE_LEN;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>x: 20 + localT * (180 - 20),</p>
+<p class="p1"><span class="Apple-converted-space">          </span>y: 52 + localT * (18 - 52)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const localT = (dist - SLOPE_LEN) / HORIZ_LEN;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>x: 180 + localT * (335 - 180),</p>
+<p class="p1"><span class="Apple-converted-space">          </span>y: 18</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function buildLedMatrix() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const container = document.getElementById('led-matrix-chips');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>container.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (let i = 0; i &lt; LED_COUNT; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const t = i / (LED_COUNT - 1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const pt = getLedCoordinates(t);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let chipColor = '#00ff66';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (i &gt;= 31) chipColor = '#ff2233';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>else if (i &gt;= 18) chipColor = '#ffcc00';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.setAttribute('id', `led-chip-${i}`);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const socket = document.createElementNS('http://www.w3.org/2000/svg', 'rect');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.setAttribute('x', pt.x - 2.2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.setAttribute('y', pt.y - 2.2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.setAttribute('width', '4.4');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.setAttribute('height', '4.4');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.setAttribute('rx', '1');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.setAttribute('fill', '#0c0f14');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.setAttribute('stroke', '#161d27');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.setAttribute('stroke-width', '0.5');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const diode = document.createElementNS('http://www.w3.org/2000/svg', 'rect');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>diode.setAttribute('id', `led-diode-${i}`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>diode.setAttribute('x', pt.x - 1.9);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>diode.setAttribute('y', pt.y - 1.9);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>diode.setAttribute('width', '3.8');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>diode.setAttribute('height', '3.8');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>diode.setAttribute('rx', '1');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>diode.setAttribute('fill', 'transparent');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>diode.setAttribute('data-color', chipColor);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.appendChild(socket);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>g.appendChild(diode);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>container.appendChild(g);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateLedMatrix(elapsedRatio) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const currentActiveIndex = Math.min(LED_COUNT - 1, Math.floor(elapsedRatio * LED_COUNT));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (let i = 0; i &lt; LED_COUNT; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const diode = document.getElementById(`led-diode-${i}`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!diode) continue;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const color = diode.getAttribute('data-color');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (i &lt; currentActiveIndex) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>diode.setAttribute('fill', color);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>diode.style.filter = `drop-shadow(0 0 3px ${color})`;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>diode.classList.remove('led-blinking');</p>
+<p class="p1"><span class="Apple-converted-space">          </span>diode.style.color = color;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if (i === currentActiveIndex) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>diode.setAttribute('fill', color);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>diode.style.color = color;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>diode.classList.add('led-blinking');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>diode.setAttribute('fill', 'transparent');</p>
+<p class="p1"><span class="Apple-converted-space">          </span>diode.style.filter = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">          </span>diode.classList.remove('led-blinking');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// モーダル用称賛リスト（絵文字なしのシンプルな日本語励ましメッセージ）</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const praises = [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ main: "TARGET ACHIEVED", sub: "素晴らしい集中力でした" },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ main: "ROUTINE CLEARED", sub: "確実な遂行でした" },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ main: "SYSTEM ALL CLEAR", sub: "この調子で進みましょう" },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{ main: "OPERATION COMPLETED", sub: "見事な達成です" }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('streak-count').innerText = streak;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getPendingTodayCount() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const todayStr = getFormattedDate(0);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return tasks.filter(t =&gt; t.date === todayStr).length;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function syncAppBadge() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const count = getPendingTodayCount();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if ('setAppBadge' in navigator &amp;&amp; 'clearAppBadge' in navigator) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (count &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>navigator.setAppBadge(count).catch(() =&gt; {});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>navigator.clearAppBadge().catch(() =&gt; {});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (count === 0 &amp;&amp; swRegistration &amp;&amp; typeof swRegistration.getNotifications === 'function') {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>swRegistration.getNotifications().then((list) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>list.forEach((n) =&gt; n.close());</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}).catch(() =&gt; {});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addNewTask() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmMajorBrass();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const titleInput = document.getElementById('input-task-title');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const title = titleInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!title) { titleInput.focus(); return; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const taskDate = selectedCustomDate || getFormattedDate(targetDayOffset);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let calculatedMins = defaultDurationMins;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let fixedTargetTimestamp = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (specificDeadlineTime) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const [targetH, targetM] = specificDeadlineTime.split(':').map(Number);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const deadlineDate = new Date(`${taskDate}T${String(targetH).padStart(2,'0')}:${String(targetM).padStart(2,'0')}:00`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>fixedTargetTimestamp = deadlineDate.getTime();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const diffMins = Math.round((fixedTargetTimestamp - Date.now()) / 60000);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>calculatedMins = diffMins &gt; 0 ? diffMins : 15;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>tasks.push({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>id: Date.now(),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>title: title,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>type: 'sub',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>date: taskDate,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>durationMins: calculatedMins,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>deadlineTime: specificDeadlineTime,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>targetTime: fixedTargetTimestamp,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>createdAt: Date.now(),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>notifyOffsets: fixedTargetTimestamp ? getNotificationOffsetsForRemainingMs(fixedTargetTimestamp - Date.now()) : null,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>firedOffsets: []</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>saveAndRefresh();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>titleInput.value = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('input-task-time').value = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>specificDeadlineTime = null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>titleInput.focus();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function saveAndRefresh() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>localStorage.setItem('booster_tasks', JSON.stringify(tasks));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderCurrentTask();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderQueueList();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>syncAppBadge();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>syncLocalNotificationTriggers();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function toggleQueueList() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('queue-drawer').classList.toggle('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderQueueList() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const todayStr = getFormattedDate(0);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const todayTasks = tasks.filter(t =&gt; t.date === todayStr);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('queue-badge').innerText = `QUEUE: ${Math.max(0, todayTasks.length - 1)}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const container = document.getElementById('queue-items-container');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (tasks.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>container.innerHTML = `&lt;div class="text-slate-400 py-2 text-center text-[10px] font-mono"&gt;QUEUE IS EMPTY&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>container.innerHTML = tasks.map((t, idx) =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex justify-between items-center bg-[#f4f5f8] px-2.5 py-1.5 rounded-xl border border-[#d0d4dc] gap-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex items-center gap-1.5 min-w-0 flex-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="text-[9px] px-1 py-0.5 rounded font-bold shrink-0 ${t.type === 'main' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-[#0055ff]'}"&gt;${t.type === 'main' ? 'M' : 'S'}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="truncate font-medium text-[#1a1b1e] text-xs"&gt;${escapeHtml(t.title)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>${t.deadlineTime ? `&lt;span class="text-[9px] px-1 rounded bg-white text-[#ff3311] border border-[#d0d4dc] shrink-0 font-mono font-bold"&gt;〜${escapeHtml(t.deadlineTime)}&lt;/span&gt;` : ''}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex items-center gap-1 shrink-0 font-mono"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="text-[9px] text-slate-400 hidden sm:inline mr-1"&gt;${t.date === todayStr ? '今日' : escapeHtml(t.date)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="moveQueueTask(${idx}, -1)" ${idx === 0 ? 'disabled' : ''} class="w-6 h-6 rounded flex items-center justify-center bg-white border border-[#d0d4dc] text-[10px] text-slate-600 hover:text-black disabled:opacity-20" title="優先度を上げる"&gt;↑&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="moveQueueTask(${idx}, 1)" ${idx === tasks.length - 1 ? 'disabled' : ''} class="w-6 h-6 rounded flex items-center justify-center bg-white border border-[#d0d4dc] text-[10px] text-slate-600 hover:text-black disabled:opacity-20" title="優先度を下げる"&gt;↓&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="editQueueTask(${idx})" class="w-6 h-6 rounded flex items-center justify-center bg-white border border-[#d0d4dc] text-[10px] text-slate-600 hover:text-[#0055ff]" title="タイトル編集"&gt;✏️&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="removeQueueTask(${idx})" class="w-6 h-6 rounded flex items-center justify-center bg-white border border-[#d0d4dc] text-[10px] text-slate-400 hover:text-red-500" title="削除"&gt;✕&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function moveQueueTask(index, direction) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const targetIndex = index + direction;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (targetIndex &lt; 0 || targetIndex &gt;= tasks.length) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const temp = tasks[index];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>tasks[index] = tasks[targetIndex];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>tasks[targetIndex] = temp;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (index === 0 || targetIndex === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>hasNotifiedCurrentTask = false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>saveAndRefresh();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function editQueueTask(index) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmMajorBrass();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const current = tasks[index];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const updated = prompt("タスク名を編集してください：", current.title);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (updated !== null &amp;&amp; updated.trim() !== "") {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>current.title = updated.trim();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveAndRefresh();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function removeQueueTask(index) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>tasks.splice(index, 1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>hasNotifiedCurrentTask = false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>saveAndRefresh();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 描画エンジン</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderCurrentTask() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>clearInterval(timerInterval);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const todayStr = getFormattedDate(0);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const remainingMain = tasks.filter(t =&gt; t.date === todayStr &amp;&amp; t.type === 'main');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const todaySub = tasks.filter(t =&gt; t.date === todayStr &amp;&amp; t.type === 'sub');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const todayRemainingCount = tasks.filter(t =&gt; t.date === todayStr).length;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// 残り総タスク数</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('seg-remaining-tasks').innerText = String(todayRemainingCount).padStart(2, '0');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// MAIN ステータスセグメント表示</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const mainSeg = document.getElementById('seg-status-main');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (remainingMain.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>mainSeg.className = "vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>mainSeg.className = "vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-ghost";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// SUB ステータスセグメント表示</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const subSeg = document.getElementById('seg-status-sub');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (todaySub.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>subSeg.className = "vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>subSeg.className = "vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-ghost";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// ★ LEFT セグメント表示（残タスクがあれば赤点灯、全完了なら消灯）</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const leftSeg = document.getElementById('seg-status-left');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (todayRemainingCount &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>leftSeg.className = "vfd-segment-14 text-[8.5px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>leftSeg.className = "vfd-segment-14 text-[8.5px] font-bold select-none tracking-widest vfd-red-ghost transition-all duration-300";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>let current = null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (remainingMain.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>current = remainingMain[0];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('gatekeeper-warning').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('status-badge').innerText = "● MAIN ROUTINE (PRIORITY)";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('status-badge').className = "text-[9px] font-extrabold tracking-widest text-amber-700 bg-amber-50 border border-amber-300 px-3 py-0.5 rounded-full uppercase";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else if (todaySub.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>current = todaySub[0];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('gatekeeper-warning').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('status-badge').innerText = "● ACTIVE FOCUS";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('status-badge').className = "text-[9px] font-extrabold tracking-widest text-[#0055ff] bg-blue-50 border border-blue-200 px-3 py-0.5 rounded-full uppercase";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('gatekeeper-warning').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('current-task-title').innerText = "NO SCHEDULED OPERATIONS";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('cheer-message').innerText = "すべてのタスクが完了しました。お疲れさまでした。";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('time-left').innerText = "00:00";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('timer-unit-label').innerText = "MIN:SEC";</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateLedMatrix(1.0);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('progress-pct-label').innerText = "0%";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('target-deadline-badge').innerText = "ALL DONE";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('action-buttons').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('status-badge').innerText = "● ALL CLEAR";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('status-badge').className = "text-[9px] font-extrabold tracking-widest text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-0.5 rounded-full uppercase";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// targetTimeのセットアップ</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!current.targetTime) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (current.deadlineTime) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const [h, m] = current.deadlineTime.split(':').map(Number);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const deadline = new Date(`${current.date}T${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:00`);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>current.targetTime = deadline.getTime();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const spanMins = Math.max(5, Math.round((current.targetTime - Date.now()) / 60000));</p>
+<p class="p1"><span class="Apple-converted-space">          </span>current.createdAt = Date.now();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>current.durationMins = spanMins;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>current.targetTime = Date.now() + (current.durationMins || 15) * 60000;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>current.createdAt = Date.now();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>current.notifyOffsets = getNotificationOffsetsForRemainingMs(current.targetTime - Date.now());</p>
+<p class="p1"><span class="Apple-converted-space">        </span>current.firedOffsets = current.firedOffsets || [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>hasNotifiedCurrentTask = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>localStorage.setItem('booster_tasks', JSON.stringify(tasks));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!Array.isArray(current.notifyOffsets)) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>current.notifyOffsets = getNotificationOffsetsForRemainingMs(current.targetTime - Date.now());</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!Array.isArray(current.firedOffsets)) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>current.firedOffsets = [];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('current-task-title').innerText = current.title;</p>
+<p class="p2"><span class="Apple-converted-space">      </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (current.deadlineTime) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('target-deadline-badge').innerText = `TARGET: 〜${current.deadlineTime}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('target-deadline-badge').innerText = `${current.durationMins || 15} MIN SPAN`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('action-buttons').classList.remove('hidden');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const update = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const diff = current.targetTime - Date.now();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (diff &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const totalSpan = current.targetTime - current.createdAt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const remainingRatio = totalSpan &gt; 0 ? Math.max(0, Math.min(1, diff / totalSpan)) : 0;</p>
+<p class="p2"><span class="Apple-converted-space">          </span></p>
+<p class="p1"><span class="Apple-converted-space">          </span>const elapsedRatio = 1.0 - remainingRatio;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>updateLedMatrix(elapsedRatio);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>document.getElementById('progress-pct-label').innerText = `${Math.round(remainingRatio * 100)}%`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>const unitLabel = document.getElementById('timer-unit-label');</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (diff &gt;= 3600000) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const hours = Math.floor(diff / 3600000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const mins = Math.floor((diff % 3600000) / 60000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('time-left').innerText = `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (unitLabel) unitLabel.innerText = "HRS:MIN";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const min = Math.floor(diff / 60000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const sec = Math.floor((diff % 60000) / 1000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('time-left').innerText = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (unitLabel) unitLabel.innerText = "MIN:SEC";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>// 残り時間別の段階的通知（起動中・フォアグラウンド時）</p>
+<p class="p1"><span class="Apple-converted-space">          </span>current.notifyOffsets.forEach((offsetMin) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (offsetMin &lt;= 0 || current.firedOffsets.includes(offsetMin)) return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const thresholdMs = offsetMin * 60000;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (diff &lt;= thresholdMs &amp;&amp; diff &gt; Math.max(0, thresholdMs - 60000)) {</p>
+<p class="p1"><span class="Apple-converted-space">              </span>current.firedOffsets.push(offsetMin);</p>
+<p class="p1"><span class="Apple-converted-space">              </span>localStorage.setItem('booster_tasks', JSON.stringify(tasks));</p>
+<p class="p1"><span class="Apple-converted-space">              </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">              </span>sendSystemNotification("FOCUS", `未完了タスクあり（残り${offsetMin}分）: ${current.title}`, {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>tag: `focus-task-${current.id}-${offsetMin}`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>renotify: true,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data: { url: location.href }</p>
+<p class="p1"><span class="Apple-converted-space">              </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>document.getElementById('cheer-message').innerText = current.type === 'main' ? "MANDATORY ROUTINE ENGAGED" : "CONCENTRATE ON CURRENT OPERATION";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>updateLedMatrix(1.0);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>document.getElementById('progress-pct-label').innerText = "0%";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>document.getElementById('time-left').innerText = "00:00";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>document.getElementById('timer-unit-label').innerText = "MIN:SEC";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>document.getElementById('cheer-message').innerText = "TIME EXPIRED // SEQUENCE SUSPENDED";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (!hasNotifiedCurrentTask) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>hasNotifiedCurrentTask = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>playWarmMajorBrass();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const isZeroTarget = current.notifyOffsets.includes(0) &amp;&amp; !current.firedOffsets.includes(0);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (isZeroTarget) {</p>
+<p class="p1"><span class="Apple-converted-space">              </span>current.firedOffsets.push(0);</p>
+<p class="p1"><span class="Apple-converted-space">              </span>localStorage.setItem('booster_tasks', JSON.stringify(tasks));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const bodyText = isZeroTarget</p>
+<p class="p1"><span class="Apple-converted-space">              </span>? `未完了タスクあり（残り時間0分0秒）: ${current.title}`</p>
+<p class="p1"><span class="Apple-converted-space">              </span>: `目標時間が終了しました: ${current.title}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>sendSystemNotification("FOCUS", bodyText, {</p>
+<p class="p1"><span class="Apple-converted-space">              </span>tag: `focus-task-${current.id}-0`,</p>
+<p class="p1"><span class="Apple-converted-space">              </span>renotify: true,</p>
+<p class="p1"><span class="Apple-converted-space">              </span>data: { url: location.href }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p1"><span class="Apple-converted-space">      </span>update();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>timerInterval = setInterval(update, 1000);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function openCompletionModal() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playCGHEAmbient();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 }, colors: ['#00ff66', '#ff2233', '#1a1b1e', '#ff3311'] });</p>
+<p class="p2"><span class="Apple-converted-space">      </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const p = praises[Math.floor(Math.random() * praises.length)];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('praise-text').innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 class="text-lg sm:text-xl font-black text-[#1a1b1e] tracking-tight uppercase leading-snug"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>${p.main}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="block text-xs font-bold text-slate-400 tracking-wider mt-0.5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>${p.sub}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderWorkChecklist();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('check-modal').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function finishTaskAndCloseModal() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmMajorBrass();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const todayStr = getFormattedDate(0);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const remainingMain = tasks.filter(t =&gt; t.date === todayStr &amp;&amp; t.type === 'main');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const targetIdx = remainingMain.length &gt; 0<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>? tasks.findIndex(t =&gt; t.id === remainingMain[0].id)<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>: tasks.findIndex(t =&gt; t.date === todayStr &amp;&amp; t.type === 'sub');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (targetIdx !== -1) tasks.splice(targetIdx, 1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>streak++;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>localStorage.setItem('booster_streak', streak);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('streak-count').innerText = streak;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('check-modal').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>hasNotifiedCurrentTask = false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>saveAndRefresh();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function extendTime(mins) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const todayStr = getFormattedDate(0);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const remainingMain = tasks.filter(t =&gt; t.date === todayStr &amp;&amp; t.type === 'main');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const current = remainingMain.length &gt; 0</p>
+<p class="p1"><span class="Apple-converted-space">        </span>? remainingMain[0]</p>
+<p class="p1"><span class="Apple-converted-space">        </span>: tasks.find(t =&gt; t.date === todayStr &amp;&amp; t.type === 'sub');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (current) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const now = Date.now();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!current.targetTime || current.targetTime &lt; now) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>current.createdAt = now;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>current.targetTime = now + mins * 60 * 1000;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>current.targetTime += mins * 60 * 1000;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>current.notifyOffsets = getNotificationOffsetsForRemainingMs(current.targetTime - now);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>current.firedOffsets = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>hasNotifiedCurrentTask = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveAndRefresh();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// チェックリスト</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const defaultWorkChecks = [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Slack / Teams / メール返信は済んだ？",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"打刻・日報・ルーティン漏れはない？",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"次の予定・会議の時間は確認した？",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"ファイルの保存・共有はOK？"</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let workChecks = JSON.parse(localStorage.getItem('booster_work_checks')) || defaultWorkChecks;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderWorkChecklist() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const container = document.getElementById('work-checklist-container');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (workChecks.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>container.innerHTML = `&lt;div class="text-slate-400 py-3 text-center text-xs"&gt;チェック項目がありません。「＋ 項目追加」から登録できます。&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>validateChecklistState(false);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>container.innerHTML = workChecks.map((item, idx) =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex items-center justify-between gap-1.5 p-1 rounded-lg hover:bg-white transition border border-transparent hover:border-[#d0d4dc] group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="flex items-start gap-2 cursor-pointer flex-1 min-w-0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="checkbox" onchange="validateChecklistState(true)" class="work-chk-item rounded accent-[#ff3311] w-4 h-4 mt-0.5 shrink-0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="leading-tight text-xs font-medium text-[#1a1b1e] break-words"&gt;${escapeHtml(item)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex items-center gap-1 shrink-0 opacity-80 group-hover:opacity-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="editSingleCheckItem(${idx})" class="w-5 h-5 rounded flex items-center justify-center text-[10px] text-slate-500 hover:text-[#0055ff] hover:bg-slate-100" title="この項目を編集"&gt;✏️&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="deleteSingleCheckItem(${idx})" class="w-5 h-5 rounded flex items-center justify-center text-[10px] text-slate-400 hover:text-red-600 hover:bg-slate-100" title="この項目を削除"&gt;✕&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>validateChecklistState(false);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function editSingleCheckItem(idx) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const currentText = workChecks[idx];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const updated = prompt("チェック項目を編集してください：", currentText);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (updated !== null &amp;&amp; updated.trim() !== "") {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>workChecks[idx] = updated.trim();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>localStorage.setItem('booster_work_checks', JSON.stringify(workChecks));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderWorkChecklist();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function deleteSingleCheckItem(idx) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (confirm(`「${workChecks[idx]}」を削除しますか？`)) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>workChecks.splice(idx, 1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>localStorage.setItem('booster_work_checks', JSON.stringify(workChecks));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderWorkChecklist();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addNewCheckItem() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmMajorBrass();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const newItem = prompt("追加するチェック項目を入力してください：");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (newItem !== null &amp;&amp; newItem.trim() !== "") {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>workChecks.push(newItem.trim());</p>
+<p class="p1"><span class="Apple-converted-space">        </span>localStorage.setItem('booster_work_checks', JSON.stringify(workChecks));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderWorkChecklist();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function validateChecklistState(playSound = false) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (playSound) playWarmTap();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const items = document.querySelectorAll('.work-chk-item');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const finishBtn = document.getElementById('finish-task-btn');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const warning = document.getElementById('checklist-warning');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (items.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>finishBtn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>finishBtn.className = "tactile-switch w-full bg-[#1a1b1e] hover:bg-black text-white font-bold py-3 rounded-xl text-xs tracking-wider uppercase shadow-md";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>warning.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const allChecked = Array.from(items).every(cb =&gt; cb.checked);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (allChecked) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>finishBtn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>finishBtn.className = "tactile-switch w-full bg-[#1a1b1e] hover:bg-black text-white font-bold py-3 rounded-xl text-xs tracking-wider uppercase shadow-md";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>warning.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>finishBtn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>finishBtn.className = "w-full bg-[#e2e5eb] text-slate-400 font-bold py-3 rounded-xl text-xs tracking-wider uppercase cursor-not-allowed opacity-60";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>warning.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateNotifyButtonUI() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const btn = document.getElementById('notify-btn');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!("Notification" in window)) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.classList.add('opacity-30', 'cursor-not-allowed');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.title = "このブラウザは通知に対応していません（iOSはホーム画面に追加したPWAで有効になります）";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (Notification.permission === "granted") {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.classList.add('text-[#0055ff]', 'border-[#0055ff]');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.title = "通知は有効です";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.classList.remove('text-[#0055ff]', 'border-[#0055ff]');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.title = "クリックして通知を許可";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function requestNotification() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>playWarmMajorBrass();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!("Notification" in window)) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert("iOSをご利用の場合は、HTTPS環境で「ホーム画面に追加」したアプリから開き、通知を許可してください。");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>await registerServiceWorker();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const p = await Notification.requestPermission();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>updateNotifyButtonUI();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (p === "granted") {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>syncAppBadge();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>syncLocalNotificationTriggers();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>sendSystemNotification("FOCUS", "通知が有効になりました（未完了タスクがある場合は離脱時に通知します）", {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>tag: "focus-notify-enabled",</p>
+<p class="p1"><span class="Apple-converted-space">          </span>data: { url: location.href }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// アプリを閉じた／バックグラウンドへ移行した際の「未完了タスクあり」通知</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function notifyPendingTasksOnLeave() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (hasNotifiedPendingOnClose) return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const pendingCount = getPendingTodayCount();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (pendingCount &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>hasNotifiedPendingOnClose = true;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>syncAppBadge();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>syncLocalNotificationTriggers();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>sendSystemNotification("FOCUS", "未完了タスクあり", {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>tag: "focus-pending-tasks",</p>
+<p class="p1"><span class="Apple-converted-space">          </span>renotify: true,</p>
+<p class="p1"><span class="Apple-converted-space">          </span>data: { url: location.href }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.addEventListener('visibilitychange', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (document.visibilityState === 'hidden') {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>notifyPendingTasksOnLeave();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else if (document.visibilityState === 'visible') {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>hasNotifiedPendingOnClose = false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('pagehide', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>notifyPendingTasksOnLeave();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('pageshow', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>hasNotifiedPendingOnClose = false;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 初期化シーケンス</p>
+<p class="p1"><span class="Apple-converted-space">    </span>registerServiceWorker().then(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if ("Notification" in window &amp;&amp; Notification.permission === "granted") {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>syncLocalNotificationTriggers();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>buildLedMatrix();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setTargetDay(0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setQuickTime(15);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>checkAndInjectDailyRoutines();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>saveAndRefresh();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateNotifyButtonUI();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
