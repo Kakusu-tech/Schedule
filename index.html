@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>FOCUS // Industrial Console (Symmetric Cockpit Edition)</title>
+  <title>FOCUS // Industrial Console (VFD &amp; Bauhaus Bobin Chronograph)</title>
   
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -11,7 +11,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kosugi&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Kosugi&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+  <!-- ARVIL フォント -->
+  <link href="https://db.onlinewebfonts.com/c/41cf7369b23047c2c50a5a158de4977c?family=Arvil+Sans" rel="stylesheet">
   <!-- 電子セグメント専用フォント (DSEG7 & DSEG14) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dseg@0.46.0/css/dseg.css">
 
@@ -22,6 +24,10 @@
   <link id="dynamic-manifest" rel="manifest" href="">
   
   <style>
+    .hidden {
+      display: none !important;
+    }
+
     /* 全体のフォント定義：英数字はMontserrat、日本語はKosugi */
     body {
       font-family: 'Montserrat', 'Kosugi', sans-serif;
@@ -31,7 +37,7 @@
       letter-spacing: -0.01em;
     }
 
-    /* 白基調 ジウジアーロ・インダストリアル 外装 */
+    /* 白基調 インダストリアル 外装 */
     .white-industrial-card {
       background: #ffffff;
       border: 1px solid #d0d4dc;
@@ -54,12 +60,36 @@
       box-shadow: 0 0 0 transparent;
     }
 
-    /* 漆黒（Jet Black）精密メーターパネル */
+    /* 漆黒（Jet Black）VFDメーターパネル */
     .piazza-jet-black-panel {
       background: #000000;
       border: 2px solid #161a22;
       box-shadow: inset 0 3px 24px rgba(0, 0, 0, 1), 0 2px 6px rgba(0, 0, 0, 0.08);
       position: relative;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    /* ボビンモード：シトロエンBX／ジウジアーロ風 マットガンメタル時計筐体 */
+    .bauhaus-dash-panel {
+      background: linear-gradient(172deg, #1d2027 0%, #111318 48%, #090a0d 100%);
+      border: 1.5px solid #2b303c;
+      border-top-color: #3f4554;
+      box-shadow:
+        inset 0 8px 20px rgba(0, 0, 0, 0.94),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 3px 10px rgba(0, 0, 0, 0.14);
+      position: relative;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    .bauhaus-dash-panel::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 130, 30, 0.55) 14%, rgba(255, 255, 255, 0.16) 50%, rgba(255, 130, 30, 0.55) 86%, transparent 100%);
+      pointer-events: none;
     }
 
     /* 漆黒に沈む極薄シアン方眼グリッド */
@@ -70,7 +100,7 @@
       background-size: 16px 16px;
     }
 
-    /* タイマー部：グリーン成型ベゼル */
+    /* タイマー部：VFDグリーン成型ベゼル */
     .piazza-speed-bezel {
       background: #020305;
       border: 2px solid #00ff66;
@@ -79,7 +109,20 @@
       position: relative;
     }
 
-    /* 左右完全シンメトリー・サブ計器ボックス */
+    /* タイマー部：ボビン・クロノグラフ ドライバーズベゼル */
+    .bauhaus-cluster-bezel {
+      background: linear-gradient(180deg, #14171d 0%, #0b0c10 100%);
+      border: 1px solid #2b303b;
+      border-top-color: #3a404e;
+      border-radius: 10px;
+      box-shadow:
+        inset 0 5px 14px rgba(0, 0, 0, 0.92),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+        0 1px 0 rgba(255, 255, 255, 0.06);
+      position: relative;
+    }
+
+    /* 左右完全シンメトリー・サブ計器ボックス（VFD用） */
     .piazza-sub-bay {
       background: #040507;
       border: 1px solid #141820;
@@ -98,7 +141,7 @@
       font-style: italic;
     }
 
-    /* 蛍光グリーン VFD（主役：タイマー） */
+    /* 蛍光グリーン VFD（主役：タイマー ＆ ボビン時計） */
     .vfd-green-glow {
       color: #00ff66;
       text-shadow: 0 0 12px rgba(0, 255, 102, 0.9), 0 0 26px rgba(0, 255, 102, 0.45);
@@ -108,7 +151,7 @@
       text-shadow: none !important;
     }
 
-    /* レッド VFD（残りタスク数 ＆ MAIN/SUB/LEFTインジケーター） */
+    /* レッド VFD（VFDモード残りタスク数 ＆ ボビンモード残りタスク数） */
     .vfd-red-glow {
       color: #ff2233;
       text-shadow: 0 0 10px rgba(255, 34, 51, 0.9), 0 0 22px rgba(255, 34, 51, 0.45);
@@ -118,13 +161,14 @@
       text-shadow: none !important;
     }
 
-    /* オレンジ VFD（時計・日付・曜日・AM/PM表示） */
+    /* オレンジ VFD（VFDモード時計 ＆ ボビンモードMAIN/SUB/LEFT） */
     .vfd-orange-glow {
       color: #ff7700;
       text-shadow: 0 0 10px rgba(255, 119, 0, 0.9), 0 0 22px rgba(255, 119, 0, 0.45);
     }
     .vfd-orange-ghost {
       color: rgba(255, 119, 0, 0.06);
+      text-shadow: none !important;
     }
 
     /* 最前線LEDチップの点滅 */
@@ -141,20 +185,322 @@
     .led-blinking {
       animation: ledChipBlink 0.75s ease-in-out infinite;
     }
+
+    /* ===== ボビンモード：クラスター上部 警告灯群 ===== */
+    .bx-warning-deck {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 6px repeat(3, 1fr);
+      align-items: center;
+      gap: 3px;
+      background: #060709;
+      padding: 4px;
+      border-radius: 6px;
+      border: 1px solid #262b35;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.9);
+    }
+    .bx-warning-divider {
+      width: 2px;
+      height: 14px;
+      margin: 0 auto;
+      background: #232732;
+      border-radius: 1px;
+    }
+    .bh-ind-cell {
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: 2px;
+      border: 1px solid #1a1e26;
+      background: linear-gradient(180deg, #101217 0%, #090a0d 100%);
+      color: rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.85);
+      transition: all 0.2s ease;
+    }
+    .bh-ind-ivory {
+      background: radial-gradient(circle at 50% 50%, #ffcf87 0%, #ff9326 65%, #c75b0a 100%);
+      color: #1c0c02;
+      border-color: #ffb85c;
+      box-shadow: 0 0 8px rgba(255, 145, 35, 0.55), inset 0 0 4px rgba(255, 240, 200, 0.65);
+    }
+    .bh-ind-blue {
+      background: radial-gradient(circle at 50% 50%, #4da6ff 0%, #0066ff 70%, #003cb3 100%);
+      color: #ffffff;
+      border-color: #66b2ff;
+      box-shadow: 0 0 8px rgba(0, 115, 255, 0.55);
+    }
+    .bh-ind-green {
+      background: radial-gradient(circle at 50% 50%, #34f59e 0%, #00b85c 70%, #007539 100%);
+      color: #022614;
+      border-color: #4dffa6;
+      box-shadow: 0 0 8px rgba(0, 210, 100, 0.5);
+    }
+    .bh-ind-red {
+      background: radial-gradient(circle at 50% 50%, #ff5533 0%, #e61c00 72%, #990d00 100%);
+      color: #ffffff;
+      border-color: #ff7755;
+      box-shadow: 0 0 9px rgba(255, 45, 20, 0.65);
+    }
+
+    /* 精密切削アパーチャー（パネル近似色の暗色ドラム＋電球バックライトのオレンジ数字） */
+    .bh-bobin-aperture {
+      position: relative;
+      height: 76px;
+      border-radius: 7px;
+      background: #08090c;
+      border: 1.5px solid #040507;
+      box-shadow:
+        inset 0 3px 10px rgba(0, 0, 0, 0.96),
+        inset 0 0 12px rgba(255, 110, 15, 0.14),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+    }
+    /* パネルに近いダークチャコール／ガンメタル回転ドラム面 */
+    .bh-bobin-drum-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          #07080a 0%,
+          #11141a 16%,
+          #181c24 34%,
+          #1e232d 50%,
+          #181c24 66%,
+          #11141a 84%,
+          #07080a 100%
+        );
+    }
+    /* 左・右どちらも60fps連続連動するためCSSトランジションは設けず直接同期 */
+    .bh-bobin-track-left,
+    .bh-bobin-track-right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      will-change: transform;
+    }
+    /* 透過発光するオレンジ数字（後ろから電球が照らす演出） */
+    #bobin-left-svg text,
+    #bobin-right-svg text {
+      text-shadow:
+        0 0 6px rgba(255, 138, 22, 0.92),
+        0 0 14px rgba(255, 92, 0, 0.55);
+    }
+    /* 曲面陰影＋中央スリット裏の電球による柔らかいアンバー拡散光 */
+    .bh-bobin-cylinder-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 20;
+      background:
+        radial-gradient(
+          ellipse 54% 74% at 50% 50%,
+          rgba(255, 128, 20, 0.16) 0%,
+          rgba(255, 95, 10, 0.05) 58%,
+          rgba(0, 0, 0, 0) 88%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(4, 5, 7, 0.88) 0%,
+          rgba(6, 7, 10, 0.34) 22%,
+          rgba(255, 155, 55, 0.03) 50%,
+          rgba(6, 7, 10, 0.34) 78%,
+          rgba(4, 5, 7, 0.88) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(4, 5, 7, 0.68) 0%,
+          rgba(4, 5, 7, 0) 24%,
+          rgba(4, 5, 7, 0) 76%,
+          rgba(4, 5, 7, 0.7) 100%
+        );
+      box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.88);
+    }
+    /* 中央読み取り線：ホワイト */
+    .bh-bobin-wire {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1.5px;
+      transform: translateX(-50%);
+      background: #ffffff;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.65);
+      z-index: 25;
+      pointer-events: none;
+    }
+    .bh-bobin-anchor-top,
+    .bh-bobin-anchor-bottom {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 5px;
+      background: #ffffff;
+      filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.55));
+      z-index: 26;
+      pointer-events: none;
+    }
+    .bh-bobin-anchor-top {
+      top: 0;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+    .bh-bobin-anchor-bottom {
+      bottom: 0;
+      clip-path: polygon(50% 0, 0 100%, 100% 100%);
+    }
+    .bh-bobin-corner-tag {
+      position: absolute;
+      bottom: 4px;
+      left: 6px;
+      z-index: 24;
+      font-family: 'Arvil Sans', 'Barlow Condensed', sans-serif;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ff9c33;
+      background: rgba(8, 10, 14, 0.76);
+      border: 1px solid rgba(255, 140, 30, 0.25);
+      padding: 0 3.5px;
+      border-radius: 2px;
+      text-shadow: 0 0 4px rgba(255, 130, 20, 0.55);
+      pointer-events: none;
+    }
+
+    /* 中央 REM % オドメーター */
+    .bh-odo-box {
+      background: #060709;
+      border: 1px solid #2b303b;
+      border-radius: 4px;
+      padding: 2.5px 3px;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.95);
+    }
+    .bh-odo-cell {
+      background: linear-gradient(180deg, #0d0e12 0%, #1c1e24 48%, #0a0b0e 100%);
+      border-radius: 1.5px;
+      border-top: 1px solid rgba(255, 165, 70, 0.14);
+      color: #ffa538;
+      font-family: 'Arvil Sans', 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 18px;
+      height: 18px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      text-shadow: 0 0 6px rgba(255, 135, 30, 0.65);
+    }
+
+    /* BX風 水平仕切りレール */
+    .bx-divider-rail {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr 1fr;
+      gap: 4px;
+      padding: 2px 4px;
+      background: #0a0b0e;
+      border-top: 1px solid #2b303b;
+      border-bottom: 1px solid #252932;
+      border-radius: 4px;
+    }
+    .bx-divider-slot {
+      height: 4px;
+      border-radius: 1px;
+      background: linear-gradient(180deg, #1b1f27 0%, #0f1116 100%);
+      border: 1px solid #232833;
+    }
+
+    /* ボビン下部：直線状LEDバー計器 */
+    .bx-led-bar-housing {
+      background: linear-gradient(180deg, #07090b 0%, #030405 100%);
+      border: 1px solid #252a34;
+      border-radius: 7px;
+      padding: 6px 8px 5px;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.95);
+    }
+    .bx-led-grid {
+      display: grid;
+      grid-template-columns: repeat(28, 1fr);
+      gap: 2px;
+      height: 10px;
+      padding: 1.5px 2px;
+      background: #040506;
+      border: 1px solid #1a1f26;
+      border-radius: 3px;
+    }
+    .bx-led-cell {
+      border-radius: 1px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: background-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .bx-led-scale-ticks {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 2px 1px 0;
+      font-family: 'Arvil Sans', 'Barlow Condensed', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      color: #9ba3b2;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .bx-led-tick-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5px;
+    }
+    .bx-led-tick-mark {
+      width: 1px;
+      height: 3.5px;
+      background: #6f7785;
+    }
+
+    /* ===== ボビンモード下部：スモークガラス VFDサブ計器 ===== */
+    .giugiaro-bobin-vfd-bay {
+      background: linear-gradient(170deg, #06080b 0%, #020304 100%);
+      border: 1px solid #262b35;
+      box-shadow:
+        inset 0 3px 10px rgba(0, 0, 0, 0.96),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .giugiaro-bobin-vfd-bay::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 45%);
+      pointer-events: none;
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between p-3.5 sm:p-4 max-w-md mx-auto select-none pb-6">
 
-  <!-- 1. トップ計器バー -->
-  <header class="flex justify-between items-center px-2 mb-2 font-mono text-xs">
-    <div class="flex items-center gap-2 font-bold">
-      <span class="w-2 h-4 rounded-sm giugiaro-red-line"></span>
-      <span id="live-date" class="text-slate-500">----.--.-- ---</span>
-      <span id="live-clock" class="text-[#1a1b1e] tabular-nums font-bold tracking-wider">00:00:00</span>
+  <!-- 1. トップ計器バー（VFD/BOBIN切替スイッチをSTREAKの横に配置） -->
+  <header class="flex justify-between items-center px-1.5 mb-2 font-mono text-[11px] sm:text-xs gap-1.5">
+    <div class="flex items-center gap-1.5 sm:gap-2 font-bold min-w-0">
+      <span class="w-2 h-4 rounded-sm giugiaro-red-line shrink-0"></span>
+      <span id="live-date" class="text-slate-500 truncate">----.--.-- ---</span>
+      <span id="live-clock" class="text-[#1a1b1e] tabular-nums font-bold tracking-wider shrink-0">00:00:00</span>
     </div>
-    <div class="flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-md border border-[#d0d4dc] shadow-sm">
-      <span class="text-[9px] font-extrabold text-slate-400">STREAK</span>
-      <span id="streak-count" class="text-xs font-black text-[#1a1b1e] font-mono">0</span>
+
+    <div class="flex items-center gap-1.5 shrink-0">
+      <!-- VFD / BOBIN 切替スイッチ -->
+      <div class="inline-flex items-center bg-white border border-[#d0d4dc] rounded-md p-0.5 text-[8.5px] font-mono font-extrabold shadow-sm shrink-0">
+        <button type="button" id="mode-btn-vfd" onclick="setMeterMode('vfd')" class="px-1.5 py-0.5 rounded transition">VFD</button>
+        <button type="button" id="mode-btn-bobin" onclick="setMeterMode('bobin')" class="px-1.5 py-0.5 rounded transition">BOBIN</button>
+      </div>
+
+      <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded-md border border-[#d0d4dc] shadow-sm shrink-0">
+        <span class="text-[9px] font-extrabold text-slate-400">STREAK</span>
+        <span id="streak-count" class="text-xs font-black text-[#1a1b1e] font-mono">0</span>
+      </div>
     </div>
   </header>
 
@@ -167,11 +513,12 @@
     </div>
 
     <!-- 上部ステータスバー -->
-    <div class="flex justify-between items-center px-1">
-      <span id="status-badge" class="text-[9px] font-extrabold tracking-widest text-[#0055ff] bg-blue-50 border border-blue-200 px-3 py-0.5 rounded-full uppercase">
+    <div class="flex justify-between items-center px-1 gap-1">
+      <span id="status-badge" class="text-[9px] font-extrabold tracking-widest text-[#0055ff] bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase truncate">
         ● ACTIVE FOCUS
       </span>
-      <span id="target-deadline-badge" class="text-[10px] font-mono font-bold text-slate-400">
+
+      <span id="target-deadline-badge" class="text-[10px] font-mono font-bold text-slate-400 shrink-0">
         15 MIN SPAN
       </span>
     </div>
@@ -186,23 +533,22 @@
       </p>
     </div>
 
-    <!-- 漆黒（Jet Black）の計器パネル -->
-    <div class="piazza-jet-black-panel cockpit-grid-bg rounded-2xl p-3.5 my-1 text-left relative overflow-hidden select-none space-y-2.5">
+    <!-- 計器パネル（VFD: 漆黒 ／ BOBIN: BX／ジウジアーロ マットガンメタル） -->
+    <div id="meter-housing-panel" class="piazza-jet-black-panel cockpit-grid-bg rounded-2xl p-3.5 my-1 text-left relative overflow-hidden select-none space-y-2.5">
       
-      <!-- 【1. 上部】折れ線 粒LEDスケール（100% ➔ 0%） -->
+      <!-- 【1. 上部】スケール／警告灯クラスター部 -->
       <div class="space-y-1">
-        <div class="flex justify-between items-center text-[8px] font-mono text-slate-400 px-1">
+        <div id="scale-header-row" class="flex justify-between items-center text-[8px] font-mono text-slate-400 px-1">
           <span class="flex items-center gap-1.5 font-bold text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-pulse"></span>
-            REMAINING SCALE // 100% ➔ 0%
+            <span id="scale-dot" class="w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-pulse"></span>
+            <span id="scale-title-label">REMAINING SCALE // 100% ➔ 0%</span>
           </span>
           <span id="progress-pct-label" class="text-slate-300 font-bold font-mono">100%</span>
         </div>
 
-        <!-- 44連 粒LED 折れ線バーグラフ -->
-        <div class="relative w-full h-14">
+        <!-- (A) VFDモード用：44連 粒LED 折れ線バーグラフ -->
+        <div id="scale-vfd-view" class="relative w-full h-14">
           <svg viewBox="0 0 350 70" class="w-full h-full absolute inset-0 pointer-events-none">
-            
             <g stroke="#1e2530" stroke-width="1.2">
               <line x1="20" y1="52" x2="20" y2="57" />
               <line x1="60" y1="44" x2="60" y2="49" />
@@ -227,135 +573,280 @@
             <g id="led-matrix-chips"></g>
           </svg>
         </div>
+
+        <!-- (B) BOBINモード用：クラスター上部 各種警告灯群（MAIN:赤 ／ SUB:青） -->
+        <div id="scale-bobin-view" class="hidden">
+          <div class="bx-warning-deck">
+            <div id="bh-ind-main" class="bh-ind-cell">MAIN</div>
+            <div id="bh-ind-sub" class="bh-ind-cell">SUB</div>
+            <div id="bh-ind-run" class="bh-ind-cell">RUN</div>
+            <div id="bh-ind-stop" class="bh-ind-cell">STOP</div>
+            <div class="bx-warning-divider"></div>
+            <div id="bh-ind-hrs" class="bh-ind-cell">HRS</div>
+            <div id="bh-ind-min" class="bh-ind-cell">MIN</div>
+            <div id="bh-ind-sec" class="bh-ind-cell">SEC</div>
+          </div>
+        </div>
       </div>
 
       <!-- 【2. 中央】メイン・タイマー -->
-      <div class="piazza-speed-bezel w-full py-2.5 px-3 flex flex-col items-center justify-center overflow-hidden">
-        <div class="w-full flex justify-between items-center text-[8px] font-mono text-[#00ff66]/70 px-1 mb-0.5">
+      <div id="timer-bezel" class="piazza-speed-bezel w-full py-2.5 px-3 flex flex-col items-center justify-center overflow-hidden">
+        <div class="w-full flex justify-between items-center text-[8px] font-mono text-[#00ff66]/70 px-1 mb-0.5" id="timer-header-row">
           <span class="flex items-center gap-1 font-bold">
-            <span class="w-1.5 h-1.5 bg-[#00ff66] rounded-sm"></span>
-            FOCUS DURATION
+            <span id="timer-header-dot" class="w-1.5 h-1.5 bg-[#00ff66] rounded-sm"></span>
+            <span id="timer-header-title">FOCUS DURATION</span>
           </span>
           <span id="timer-unit-label" class="text-slate-400 font-bold uppercase tracking-wider">MIN:SEC</span>
         </div>
 
-        <div class="grid grid-cols-[1fr_auto_1fr] items-center w-full py-1.5">
-          <!-- 左横：単位識別 14セグメント表示（HRS / MIN / SEC） -->
-          <div class="flex flex-col items-end justify-center gap-0.5 pr-1.5 sm:pr-3">
-            <span id="seg-timer-hrs" class="vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none">HRS</span>
-            <span id="seg-timer-min" class="vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none">MIN</span>
-            <span id="seg-timer-sec" class="vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none">SEC</span>
-          </div>
-
-          <!-- 中央：メイン7セグメントタイマー -->
-          <div class="relative flex items-center justify-center">
-            <div class="vfd-segment vfd-green-ghost text-[38px] sm:text-6xl font-bold tracking-wider sm:tracking-widest select-none leading-none">
-              88:88
+        <!-- (A) VFDタイマービュー -->
+        <div id="timer-vfd-view" class="w-full">
+          <div class="grid grid-cols-[1fr_auto_1fr] items-center w-full py-1.5">
+            <!-- 左横：単位識別 14セグメント表示（HRS / MIN / SEC） -->
+            <div class="flex flex-col items-end justify-center gap-0.5 pr-1.5 sm:pr-3">
+              <span id="seg-timer-hrs" class="vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none">HRS</span>
+              <span id="seg-timer-min" class="vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none">MIN</span>
+              <span id="seg-timer-sec" class="vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none">SEC</span>
             </div>
-            <div id="time-left" class="vfd-segment vfd-green-glow text-[38px] sm:text-6xl font-bold tracking-wider sm:tracking-widest select-none z-10 tabular-nums absolute inset-0 flex items-center justify-center leading-none">
-              --:--
-            </div>
-          </div>
 
-          <!-- 右横：残り1時間未満で点灯する2桁ミリ秒7セグメント表示 -->
-          <div class="flex flex-col items-start justify-center pl-1.5 sm:pl-3">
-            <span id="seg-timer-ms" class="vfd-segment-14 text-[7px] sm:text-[8.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none mb-0.5">MS</span>
-            <div class="relative flex items-baseline">
-              <span class="vfd-segment vfd-green-ghost text-base sm:text-xl font-bold tracking-normal select-none leading-none">
-                88
-              </span>
-              <span id="time-ms" class="vfd-segment vfd-green-glow text-base sm:text-xl font-bold tracking-normal select-none z-10 tabular-nums absolute inset-0 text-right leading-none"></span>
+            <!-- 中央：メイン7セグメントタイマー -->
+            <div class="relative flex items-center justify-center">
+              <div class="vfd-segment vfd-green-ghost text-[38px] sm:text-6xl font-bold tracking-wider sm:tracking-widest select-none leading-none">
+                88:88
+              </div>
+              <div id="time-left" class="vfd-segment vfd-green-glow text-[38px] sm:text-6xl font-bold tracking-wider sm:tracking-widest select-none z-10 tabular-nums absolute inset-0 flex items-center justify-center leading-none">
+                --:--
+              </div>
+            </div>
+
+            <!-- 右横：残り1時間未満で点灯する2桁ミリ秒7セグメント表示 -->
+            <div class="flex flex-col items-start justify-center pl-1.5 sm:pl-3">
+              <span id="seg-timer-ms" class="vfd-segment-14 text-[7px] sm:text-[8.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none mb-0.5">MS</span>
+              <div class="relative flex items-baseline">
+                <span class="vfd-segment vfd-green-ghost text-base sm:text-xl font-bold tracking-normal select-none leading-none">
+                  88
+                </span>
+                <span id="time-ms" class="vfd-segment vfd-green-glow text-base sm:text-xl font-bold tracking-normal select-none z-10 tabular-nums absolute inset-0 text-right leading-none"></span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="w-1/2 h-[2px] bg-[#ff3311] rounded-full mt-0.5 shadow-[0_0_6px_#ff3311]"></div>
+        <!-- (B) BOBINタイマービュー：暗色回転パネル＋電球バックライトのオレンジ数字（ARVILフォント・ホワイト読み取り線） -->
+        <div id="timer-bobin-view" class="hidden w-full py-1">
+          <div class="grid grid-cols-[1fr_46px_1fr] items-center gap-1.5 w-full">
+            
+            <!-- 左ボビン窓（MIN または HRS の連続連動横回転ドラム） -->
+            <div class="bh-bobin-aperture">
+              <div class="bh-bobin-drum-bg"></div>
+              <div id="bobin-left-track" class="bh-bobin-track-left">
+                <svg id="bobin-left-svg" height="76" class="block"></svg>
+              </div>
+              <div class="bh-bobin-cylinder-overlay"></div>
+              <div class="bh-bobin-anchor-top"></div>
+              <div class="bh-bobin-wire"></div>
+              <div class="bh-bobin-anchor-bottom"></div>
+              <span id="bobin-left-label" class="bh-bobin-corner-tag">min</span>
+            </div>
+
+            <!-- 中央：機械式オドメーター小窓（REM %） -->
+            <div class="flex flex-col items-center justify-center gap-1">
+              <div class="text-[8px] font-bold text-[#ffaa55]/90 leading-none tracking-wider" style="font-family: 'Arvil Sans', 'Barlow Condensed', sans-serif;">REM %</div>
+              <div class="bh-odo-box w-full grid grid-cols-3 gap-[1.5px]">
+                <div id="bh-pct-0" class="bh-odo-cell">1</div>
+                <div id="bh-pct-1" class="bh-odo-cell">0</div>
+                <div id="bh-pct-2" class="bh-odo-cell">0</div>
+              </div>
+            </div>
+
+            <!-- 右ボビン窓（SEC または MIN の横回転ドラム） -->
+            <div class="bh-bobin-aperture">
+              <div class="bh-bobin-drum-bg"></div>
+              <div id="bobin-right-track" class="bh-bobin-track-right">
+                <svg id="bobin-right-svg" height="76" class="block"></svg>
+              </div>
+              <div class="bh-bobin-cylinder-overlay"></div>
+              <div class="bh-bobin-anchor-top"></div>
+              <div class="bh-bobin-wire"></div>
+              <div class="bh-bobin-anchor-bottom"></div>
+              <span id="bobin-right-label" class="bh-bobin-corner-tag">sec</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="timer-accent-bar" class="w-1/2 h-[2px] bg-[#ff3311] rounded-full mt-1 shadow-[0_0_6px_#ff3311]"></div>
       </div>
 
-      <!-- 【3. 下部】完全シンメトリー（50:50）インライン・サブ計器 -->
-      <div class="grid grid-cols-2 gap-2 pt-0.5">
-        
-        <!-- 左【50%】：★TASKS据え置き ＋ MAIN/SUB ＆ セグメントLEFT（赤色VFD） -->
-        <div class="piazza-sub-bay rounded-xl px-2.5 py-1.5 flex flex-col justify-between border-l-2 border-l-[#ff2233]">
-          
-          <!-- 上段：TASKS（据え置き） ＆ QUEUE -->
-          <div class="flex justify-between items-center text-[7.5px] font-mono font-bold text-slate-400 uppercase">
-            <span class="text-[#ff4455] tracking-wider">TASKS</span>
-            <span class="text-slate-500 tracking-wider">QUEUE</span>
+      <!-- 【2.5 BOBINモード用】水平セパレーター ＆ ボビンメーター下部の直線LEDバー残り時間計 -->
+      <div id="bobin-led-section" class="hidden space-y-1.5">
+        <div class="bx-divider-rail">
+          <div class="bx-divider-slot"></div>
+          <div class="bx-divider-slot"></div>
+          <div class="bx-divider-slot"></div>
+        </div>
+
+        <div class="bx-led-bar-housing space-y-1">
+          <div class="flex justify-between items-center text-[7.5px] font-mono text-slate-400 px-0.5">
+            <span class="flex items-center gap-1.5 font-bold text-slate-300">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#00e868]"></span>
+              <span>REMAINING SCALE // 100% ➔ 0%</span>
+            </span>
+            <span id="bobin-pct-label" class="text-[#ffaa55] font-bold" style="font-family: 'Arvil Sans', 'Barlow Condensed', sans-serif; font-size: 10px;">100%</span>
           </div>
 
-          <!-- 下段：MAIN / SUB ＋ ★セグメントLEFT ＋ 残数カウント7セグ -->
-          <div class="flex items-center justify-between my-auto pt-1">
-            
-            <div class="flex items-center gap-1.5">
-              <!-- MAIN / SUB 14セグメント -->
-              <div class="flex flex-col gap-0.5 text-left">
-                <span id="seg-status-main" class="vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300">MAIN</span>
-                <span id="seg-status-sub" class="vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300">SUB</span>
-              </div>
+          <div id="bobin-led-grid" class="bx-led-grid"></div>
 
-              <!-- ★ セグメント表記の LEFT (14セグメント) -->
-              <div class="relative flex items-baseline">
-                <span class="vfd-segment-14 vfd-red-ghost text-[8.5px] font-bold select-none tracking-widest absolute right-0">~~~~</span>
-                <span id="seg-status-left" class="vfd-segment-14 text-[8.5px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300">LEFT</span>
-              </div>
+          <div class="bx-led-scale-ticks">
+            <div class="bx-led-tick-item"><span class="bx-led-tick-mark"></span><span>100%</span></div>
+            <div class="bx-led-tick-item"><span class="bx-led-tick-mark"></span><span>75%</span></div>
+            <div class="bx-led-tick-item"><span class="bx-led-tick-mark"></span><span>50%</span></div>
+            <div class="bx-led-tick-item"><span class="bx-led-tick-mark"></span><span>25%</span></div>
+            <div class="bx-led-tick-item"><span class="bx-led-tick-mark"></span><span class="text-[#ff4433]">0%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 【3A. 下部（VFDモード用）】完全シンメトリー（50:50）電子VFDサブ計器 -->
+      <div id="sub-bay-vfd-view" class="pt-0.5">
+        <div class="grid grid-cols-2 gap-2">
+          <!-- 左【50%】：TASKS ＋ MAIN/SUB ＆ セグメントLEFT（赤色VFD） -->
+          <div class="piazza-sub-bay rounded-xl px-2.5 py-1.5 flex flex-col justify-between border-l-2 border-l-[#ff2233]">
+            <div class="flex justify-between items-center text-[7.5px] font-mono font-bold text-slate-400 uppercase">
+              <span class="text-[#ff4455] tracking-wider">TASKS</span>
+              <span class="text-slate-500 tracking-wider">QUEUE</span>
             </div>
 
-            <!-- 残りタスク数（7セグメント） -->
-            <div class="relative flex items-baseline">
-              <span class="vfd-segment vfd-red-ghost text-2xl font-bold select-none absolute right-0">88</span>
-              <span id="seg-remaining-tasks" class="vfd-segment vfd-red-glow text-2xl font-bold select-none z-10 tabular-nums">00</span>
+            <div class="flex items-center justify-between my-auto pt-1">
+              <div class="flex items-center gap-1.5">
+                <div class="flex flex-col gap-0.5 text-left">
+                  <span id="seg-status-main" class="vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300">MAIN</span>
+                  <span id="seg-status-sub" class="vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300">SUB</span>
+                </div>
+
+                <div class="relative flex items-baseline">
+                  <span class="vfd-segment-14 vfd-red-ghost text-[8.5px] font-bold select-none tracking-widest absolute right-0">~~~~</span>
+                  <span id="seg-status-left" class="vfd-segment-14 text-[8.5px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300">LEFT</span>
+                </div>
+              </div>
+
+              <div class="relative flex items-baseline">
+                <span class="vfd-segment vfd-red-ghost text-2xl font-bold select-none absolute right-0">88</span>
+                <span id="seg-remaining-tasks" class="vfd-segment vfd-red-glow text-2xl font-bold select-none z-10 tabular-nums">00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右【50%】：セグメント日付(MM.DD) ＆ 曜日(14セグ) ＆ AM/PM ＆ 12時間時計（オレンジVFD） -->
+          <div class="piazza-sub-bay rounded-xl px-2.5 py-1.5 flex flex-col justify-between border-r-2 border-r-[#ff7700]">
+            <div class="flex justify-between items-center text-[7.5px] font-mono font-bold text-slate-400 uppercase">
+              <span class="text-[#ff8800] tracking-wider">LOCAL TIME</span>
+              <span class="text-slate-500 tracking-wider">CLOCK</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-1 my-auto pt-1">
+              <div class="flex items-baseline gap-1 shrink-0">
+                <div class="relative flex items-baseline">
+                  <span class="vfd-segment vfd-orange-ghost text-[8px] sm:text-[9px] font-bold tracking-normal select-none">88.88</span>
+                  <span id="sub-clock-date" class="vfd-segment vfd-orange-glow text-[8px] sm:text-[9px] font-bold tracking-normal select-none z-10 tabular-nums absolute left-0">00.00</span>
+                </div>
+
+                <div class="relative flex items-baseline">
+                  <span class="vfd-segment-14 vfd-orange-ghost text-[7.5px] sm:text-[8.5px] font-bold tracking-normal select-none">~~~</span>
+                  <span id="sub-clock-day-seg" class="vfd-segment-14 vfd-orange-glow text-[7.5px] sm:text-[8.5px] font-bold tracking-normal select-none z-10 uppercase absolute left-0">---</span>
+                </div>
+              </div>
+
+              <div class="flex items-baseline gap-1 shrink-0 pr-0.5">
+                <div class="relative flex items-baseline">
+                  <span class="vfd-segment-14 vfd-orange-ghost text-[7.5px] sm:text-[8px] font-bold tracking-normal select-none">~~</span>
+                  <span id="sub-clock-ampm" class="vfd-segment-14 vfd-orange-glow text-[7.5px] sm:text-[8px] font-bold tracking-normal select-none z-10 absolute left-0">AM</span>
+                </div>
+
+                <div class="relative flex items-baseline justify-end">
+                  <span class="vfd-segment vfd-orange-ghost text-[9.5px] sm:text-[10.5px] font-bold tracking-normal select-none">
+                    88:88:88
+                  </span>
+                  <span id="sub-clock-time" class="vfd-segment vfd-orange-glow text-[9.5px] sm:text-[10.5px] font-bold tracking-normal select-none z-10 tabular-nums absolute right-0">
+                    12:00:00
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- 右【50%】：セグメント日付(MM.DD) ＆ 曜日(14セグ) ＆ AM/PM ＆ 12時間時計（オレンジVFD） -->
-        <div class="piazza-sub-bay rounded-xl px-2.5 py-1.5 flex flex-col justify-between border-r-2 border-r-[#ff7700]">
-          
-          <!-- 上段：LOCAL TIME ＆ CLOCK -->
-          <div class="flex justify-between items-center text-[7.5px] font-mono font-bold text-slate-400 uppercase">
-            <span class="text-[#ff8800] tracking-wider">LOCAL TIME</span>
-            <span class="text-slate-500 tracking-wider">CLOCK</span>
-          </div>
+      <!-- 【3B. 下部（BOBINモード用）】スモークガラス 蛍光管（VFD）サブ計器（左：TASKS ／ 右：蛍光グリーンCLOCK） -->
+      <div id="sub-bay-bobin-view" class="hidden pt-0.5">
+        <div class="grid grid-cols-2 gap-2">
 
-          <!-- 下段：日付(MM.DD) ＋ 曜日(14セグ) ＋ AM/PM ＋ 12時間時計 (HH:MM:SS) -->
-          <div class="flex items-center justify-between gap-1 my-auto pt-1">
-            
-            <div class="flex items-baseline gap-1 shrink-0">
-              <!-- 電子7セグ日付表示 (MM.DD) -->
-              <div class="relative flex items-baseline">
-                <span class="vfd-segment vfd-orange-ghost text-[8px] sm:text-[9px] font-bold tracking-normal select-none">88.88</span>
-                <span id="sub-clock-date" class="vfd-segment vfd-orange-glow text-[8px] sm:text-[9px] font-bold tracking-normal select-none z-10 tabular-nums absolute left-0">00.00</span>
-              </div>
-
-              <!-- 電子14セグ曜日表示 (FRI, SATなど) -->
-              <div class="relative flex items-baseline">
-                <span class="vfd-segment-14 vfd-orange-ghost text-[7.5px] sm:text-[8.5px] font-bold tracking-normal select-none">~~~</span>
-                <span id="sub-clock-day-seg" class="vfd-segment-14 vfd-orange-glow text-[7.5px] sm:text-[8.5px] font-bold tracking-normal select-none z-10 uppercase absolute left-0">---</span>
-              </div>
+          <!-- 左【50%】：TASKS（MAIN/SUB/LEFTはオレンジ、タスク数のみ蛍光赤VFD） -->
+          <div class="giugiaro-bobin-vfd-bay rounded-xl px-2.5 py-1.5 flex flex-col justify-between border-l-2 border-l-[#ff7700]">
+            <div class="flex justify-between items-center text-[7.5px] font-mono font-bold text-slate-400 uppercase">
+              <span class="text-[#ff8800] tracking-wider">TASKS</span>
+              <span class="text-slate-500 tracking-wider">VFD QUEUE</span>
             </div>
 
-            <div class="flex items-baseline gap-1 shrink-0 pr-0.5">
-              <!-- AM/PM 14セグメント -->
-              <div class="relative flex items-baseline">
-                <span class="vfd-segment-14 vfd-orange-ghost text-[7.5px] sm:text-[8px] font-bold tracking-normal select-none">~~</span>
-                <span id="sub-clock-ampm" class="vfd-segment-14 vfd-orange-glow text-[7.5px] sm:text-[8px] font-bold tracking-normal select-none z-10 absolute left-0">AM</span>
+            <div class="flex items-center justify-between my-auto pt-1">
+              <div class="flex items-center gap-1.5">
+                <div class="flex flex-col gap-0.5 text-left">
+                  <span id="lcd-status-main" class="vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-orange-glow transition-all duration-300">MAIN</span>
+                  <span id="lcd-status-sub" class="vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-orange-glow transition-all duration-300">SUB</span>
+                </div>
+
+                <div class="relative flex items-baseline">
+                  <span class="vfd-segment-14 vfd-orange-ghost text-[8.5px] font-bold select-none tracking-widest absolute right-0">~~~~</span>
+                  <span id="lcd-status-left" class="vfd-segment-14 text-[8.5px] font-bold select-none tracking-widest vfd-orange-glow transition-all duration-300">LEFT</span>
+                </div>
               </div>
 
-              <!-- 12時間 電子7セグ時刻 (HH:MM:SS) -->
-              <div class="relative flex items-baseline justify-end">
-                <span class="vfd-segment vfd-orange-ghost text-[9.5px] sm:text-[10.5px] font-bold tracking-normal select-none">
-                  88:88:88
-                </span>
-                <span id="sub-clock-time" class="vfd-segment vfd-orange-glow text-[9.5px] sm:text-[10.5px] font-bold tracking-normal select-none z-10 tabular-nums absolute right-0">
-                  12:00:00
-                </span>
+              <div class="relative flex items-baseline">
+                <span class="vfd-segment vfd-red-ghost text-2xl font-bold select-none absolute right-0">88</span>
+                <span id="lcd-remaining-tasks" class="vfd-segment vfd-red-glow text-2xl font-bold select-none z-10 tabular-nums">00</span>
               </div>
             </div>
-
           </div>
+
+          <!-- 右【50%】：LOCAL TIME（蛍光管グリーンVFDパネル） -->
+          <div class="giugiaro-bobin-vfd-bay rounded-xl px-2.5 py-1.5 flex flex-col justify-between border-r-2 border-r-[#00ff66]">
+            <div class="flex justify-between items-center text-[7.5px] font-mono font-bold text-slate-400 uppercase">
+              <span class="text-[#00ff66] tracking-wider">LOCAL TIME</span>
+              <span class="text-slate-500 tracking-wider">VFD CLOCK</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-1 my-auto pt-1">
+              <div class="flex items-baseline gap-1 shrink-0">
+                <div class="relative flex items-baseline">
+                  <span class="vfd-segment vfd-green-ghost text-[8px] sm:text-[9px] font-bold tracking-normal select-none">88.88</span>
+                  <span id="lcd-clock-date" class="vfd-segment vfd-green-glow text-[8px] sm:text-[9px] font-bold tracking-normal select-none z-10 tabular-nums absolute left-0">00.00</span>
+                </div>
+
+                <div class="relative flex items-baseline">
+                  <span class="vfd-segment-14 vfd-green-ghost text-[7.5px] sm:text-[8.5px] font-bold tracking-normal select-none">~~~</span>
+                  <span id="lcd-clock-day-seg" class="vfd-segment-14 vfd-green-glow text-[7.5px] sm:text-[8.5px] font-bold tracking-normal select-none z-10 uppercase absolute left-0">---</span>
+                </div>
+              </div>
+
+              <div class="flex items-baseline gap-1 shrink-0 pr-0.5">
+                <div class="relative flex items-baseline">
+                  <span class="vfd-segment-14 vfd-green-ghost text-[7.5px] sm:text-[8px] font-bold tracking-normal select-none">~~</span>
+                  <span id="lcd-clock-ampm" class="vfd-segment-14 vfd-green-glow text-[7.5px] sm:text-[8px] font-bold tracking-normal select-none z-10 absolute left-0">AM</span>
+                </div>
+
+                <div class="relative flex items-baseline justify-end">
+                  <span class="vfd-segment vfd-green-ghost text-[9.5px] sm:text-[10.5px] font-bold tracking-normal select-none">
+                    88:88:88
+                  </span>
+                  <span id="lcd-clock-time" class="vfd-segment vfd-green-glow text-[9.5px] sm:text-[10.5px] font-bold tracking-normal select-none z-10 tabular-nums absolute right-0">
+                    12:00:00
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-
       </div>
 
     </div>
@@ -452,11 +943,10 @@
     </div>
   </div>
 
-  <!-- タスク完了モーダル（★シンプルな英文表記 CONFIRM & PROCEED） -->
+  <!-- タスク完了モーダル -->
   <div id="check-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="white-industrial-card rounded-3xl p-6 text-center max-w-sm w-full shadow-2xl">
       
-      <!-- 2段改行見出し -->
       <div id="praise-text" class="mb-2">
         <h3 class="text-lg sm:text-xl font-black text-[#1a1b1e] tracking-tight uppercase leading-snug">
           TARGET ACHIEVED
@@ -482,7 +972,6 @@
 
       <p id="checklist-warning" class="text-[10px] text-amber-600 font-bold mb-2 hidden">⚠️ すべての項目にチェックを入れてください</p>
 
-      <!-- ★ シンプルな英文表記に変更 -->
       <button id="finish-task-btn" onclick="finishTaskAndCloseModal()" class="tactile-switch w-full bg-[#1a1b1e] text-white font-bold py-3 rounded-xl text-xs tracking-wider uppercase transition duration-150">
         CONFIRM &amp; PROCEED
       </button>
@@ -491,12 +980,37 @@
 
   <!-- 5. 音響エンジン＆ローカル通知エンジン -->
   <script>
+    const memoryFallbackStore = {};
+    function safeStorageGet(key) {
+      try {
+        return window.localStorage.getItem(key);
+      } catch (_) {
+        return Object.prototype.hasOwnProperty.call(memoryFallbackStore, key) ? memoryFallbackStore[key] : null;
+      }
+    }
+    function safeStorageSet(key, val) {
+      try {
+        window.localStorage.setItem(key, val);
+      } catch (_) {
+        memoryFallbackStore[key] = String(val);
+      }
+    }
+    function safeJsonGet(key, fallback) {
+      try {
+        const raw = safeStorageGet(key);
+        return raw ? JSON.parse(raw) : fallback;
+      } catch (_) {
+        return fallback;
+      }
+    }
+
     let audioCtx = null;
     let silkyReverbBuffer = null;
     let swRegistration = null;
     let hasNotifiedPendingOnClose = false;
     let timerInterval = null;
     let timerRafId = null;
+    let meterMode = safeStorageGet('booster_meter_mode') || 'bobin';
 
     function escapeHtml(str) {
       return String(str)
@@ -508,11 +1022,13 @@
     }
 
     function initAudioContext() {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return null;
       if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        audioCtx = new AudioContextClass();
       }
       if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
+        audioCtx.resume().catch(() => {});
       }
       return audioCtx;
     }
@@ -544,6 +1060,7 @@
     function playWarmTap() {
       try {
         const ctx = initAudioContext();
+        if (!ctx) return;
         const now = ctx.currentTime;
         const voices = [
           { freq: 97.99,  vol: 0.16 },
@@ -594,6 +1111,7 @@
     function playWarmMajorBrass() {
       try {
         const ctx = initAudioContext();
+        if (!ctx) return;
         const now = ctx.currentTime;
         const notes = [65.41, 98.00, 164.81, 246.94, 293.66];
 
@@ -638,6 +1156,7 @@
     function playCGHEAmbient() {
       try {
         const ctx = initAudioContext();
+        if (!ctx) return;
         const now = ctx.currentTime;
         const notes = [
           { freq: 65.41,  vol: 0.22 },
@@ -684,121 +1203,120 @@
       }
     }
 
+    function drawRoundRect(ctx, x, y, w, h, r) {
+      const radius = Math.min(r, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.arcTo(x + w, y, x + w, y + h, radius);
+      ctx.arcTo(x + w, y + h, x, y + h, radius);
+      ctx.arcTo(x, y + h, x, y, radius);
+      ctx.arcTo(x, y, x + w, y, radius);
+      ctx.closePath();
+    }
+
     // ジウジアーロ・インダストリアルデザインを意識したモノクロ・カレンダーアイコン＆PWAマニフェスト生成
     function generateBrightIcon() {
-      const canvas = document.createElement('canvas');
-      canvas.width = 180; canvas.height = 180;
-      const ctx = canvas.getContext('2d');
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = 180; canvas.height = 180;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
 
-      // ベース筐体（マットライトグレー＆精密ベゼル）
-      ctx.fillStyle = '#f2f3f5';
-      ctx.beginPath();
-      ctx.roundRect(0, 0, 180, 180, 40);
-      ctx.fill();
-
-      ctx.strokeStyle = '#c8cdd6';
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.roundRect(2, 2, 176, 176, 38);
-      ctx.stroke();
-
-      // カレンダー下部の立体タクタイル・ベース
-      ctx.fillStyle = '#b4b9c5';
-      ctx.beginPath();
-      ctx.roundRect(26, 36, 128, 118, 14);
-      ctx.fill();
-
-      // カレンダー本体（白）
-      ctx.fillStyle = '#ffffff';
-      ctx.beginPath();
-      ctx.roundRect(26, 32, 128, 118, 14);
-      ctx.fill();
-
-      // ヘッダー帯（漆黒）を本体角丸でクリッピング
-      ctx.save();
-      ctx.beginPath();
-      ctx.roundRect(26, 32, 128, 118, 14);
-      ctx.clip();
-
-      ctx.fillStyle = '#16181c';
-      ctx.fillRect(26, 32, 128, 34);
-
-      // 計器風の極細スリットライン
-      ctx.fillStyle = '#4b5563';
-      ctx.fillRect(41, 56, 98, 2);
-      ctx.restore();
-
-      // カレンダー外枠（シャープな黒縁）
-      ctx.strokeStyle = '#16181c';
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.roundRect(26, 32, 128, 118, 14);
-      ctx.stroke();
-
-      // 左右シンメトリーのバインダーピン
-      [56, 114].forEach((px) => {
         ctx.fillStyle = '#f2f3f5';
-        ctx.beginPath();
-        ctx.roundRect(px - 3, 21, 16, 24, 6);
+        drawRoundRect(ctx, 0, 0, 180, 180, 40);
         ctx.fill();
+
+        ctx.strokeStyle = '#c8cdd6';
+        ctx.lineWidth = 4;
+        drawRoundRect(ctx, 2, 2, 176, 176, 38);
+        ctx.stroke();
+
+        ctx.fillStyle = '#b4b9c5';
+        drawRoundRect(ctx, 26, 36, 128, 118, 14);
+        ctx.fill();
+
+        ctx.fillStyle = '#ffffff';
+        drawRoundRect(ctx, 26, 32, 128, 118, 14);
+        ctx.fill();
+
+        ctx.save();
+        drawRoundRect(ctx, 26, 32, 128, 118, 14);
+        ctx.clip();
 
         ctx.fillStyle = '#16181c';
-        ctx.beginPath();
-        ctx.roundRect(px, 24, 10, 18, 4);
-        ctx.fill();
-      });
+        ctx.fillRect(26, 32, 128, 34);
 
-      // ミニマルな 4x3 モノクロ・カレンダーグリッド
-      const cols = 4, rows = 3;
-      const cellW = 20, cellH = 14, gapX = 6, gapY = 6;
-      const startX = 41, startY = 78;
+        ctx.fillStyle = '#4b5563';
+        ctx.fillRect(41, 56, 98, 2);
+        ctx.restore();
 
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const x = startX + c * (cellW + gapX);
-          const y = startY + r * (cellH + gapY);
-          const isActiveDay = (r === 1 && c === 2);
+        ctx.strokeStyle = '#16181c';
+        ctx.lineWidth = 4;
+        drawRoundRect(ctx, 26, 32, 128, 118, 14);
+        ctx.stroke();
 
-          if (isActiveDay) {
-            ctx.fillStyle = '#16181c';
-            ctx.beginPath();
-            ctx.roundRect(x, y, cellW, cellH, 3);
-            ctx.fill();
+        [56, 114].forEach((px) => {
+          ctx.fillStyle = '#f2f3f5';
+          drawRoundRect(ctx, px - 3, 21, 16, 24, 6);
+          ctx.fill();
 
-            // フォーカス日を示す白い精密センタードット
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(x + 8, y + 5, 4, 4);
-          } else {
-            ctx.fillStyle = (r === 0 && c < 2) ? '#e6e9ef' : '#cfd5df';
-            ctx.beginPath();
-            ctx.roundRect(x, y, cellW, cellH, 3);
-            ctx.fill();
+          ctx.fillStyle = '#16181c';
+          drawRoundRect(ctx, px, 24, 10, 18, 4);
+          ctx.fill();
+        });
+
+        const cols = 4, rows = 3;
+        const cellW = 20, cellH = 14, gapX = 6, gapY = 6;
+        const startX = 41, startY = 78;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const x = startX + c * (cellW + gapX);
+            const y = startY + r * (cellH + gapY);
+            const isActiveDay = (r === 1 && c === 2);
+
+            if (isActiveDay) {
+              ctx.fillStyle = '#16181c';
+              drawRoundRect(ctx, x, y, cellW, cellH, 3);
+              ctx.fill();
+
+              ctx.fillStyle = '#ffffff';
+              ctx.fillRect(x + 8, y + 5, 4, 4);
+            } else {
+              ctx.fillStyle = (r === 0 && c < 2) ? '#e6e9ef' : '#cfd5df';
+              drawRoundRect(ctx, x, y, cellW, cellH, 3);
+              ctx.fill();
+            }
           }
         }
-      }
 
-      const iconUrl = canvas.toDataURL('image/png');
-      document.getElementById('dynamic-favicon').href = iconUrl;
-      document.getElementById('dynamic-apple-icon').href = iconUrl;
+        const iconUrl = canvas.toDataURL('image/png');
+        const fav = document.getElementById('dynamic-favicon');
+        const apple = document.getElementById('dynamic-apple-icon');
+        if (fav) fav.href = iconUrl;
+        if (apple) apple.href = iconUrl;
 
-      const manifest = {
-        name: "FOCUS // Industrial Console",
-        short_name: "FOCUS",
-        start_url: location.protocol.startsWith('http') ? location.href.split('#')[0] : ".",
-        display: "standalone",
-        background_color: "#eaecf0",
-        theme_color: "#eaecf0",
-        icons: [
-          {
-            src: iconUrl,
-            sizes: "180x180",
-            type: "image/png"
-          }
-        ]
-      };
-      const manifestEl = document.getElementById('dynamic-manifest');
-      if (manifestEl) {
-        manifestEl.href = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifest));
+        const manifest = {
+          name: "FOCUS // Industrial Console",
+          short_name: "FOCUS",
+          start_url: location.protocol.startsWith('http') ? location.href.split('#')[0] : ".",
+          display: "standalone",
+          background_color: "#eaecf0",
+          theme_color: "#eaecf0",
+          icons: [
+            {
+              src: iconUrl,
+              sizes: "180x180",
+              type: "image/png"
+            }
+          ]
+        };
+        const manifestEl = document.getElementById('dynamic-manifest');
+        if (manifestEl) {
+          manifestEl.href = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifest));
+        }
+      } catch (e) {
+        console.warn('Icon generation skipped:', e);
       }
     }
     generateBrightIcon();
@@ -931,6 +1449,233 @@
       });
     }
 
+    // ===== メーターモード切替（VFD ⇄ ボビン） =====
+    function applyMeterModeUI() {
+      const isBobin = meterMode === 'bobin';
+      const btnVfd = document.getElementById('mode-btn-vfd');
+      const btnBobin = document.getElementById('mode-btn-bobin');
+
+      if (btnVfd && btnBobin) {
+        btnVfd.className = isBobin
+          ? "px-1.5 py-0.5 rounded text-slate-500 hover:text-black transition"
+          : "px-1.5 py-0.5 rounded bg-[#1a1b1e] text-[#00ff66] shadow-sm transition";
+        btnBobin.className = isBobin
+          ? "px-1.5 py-0.5 rounded bg-[#1a1b1e] text-[#ff9f2e] shadow-sm transition"
+          : "px-1.5 py-0.5 rounded text-slate-500 hover:text-black transition";
+      }
+
+      document.getElementById('scale-header-row').classList.toggle('hidden', isBobin);
+      document.getElementById('scale-vfd-view').classList.toggle('hidden', isBobin);
+      document.getElementById('scale-bobin-view').classList.toggle('hidden', !isBobin);
+      document.getElementById('timer-vfd-view').classList.toggle('hidden', isBobin);
+      document.getElementById('timer-bobin-view').classList.toggle('hidden', !isBobin);
+      document.getElementById('bobin-led-section').classList.toggle('hidden', !isBobin);
+      document.getElementById('sub-bay-vfd-view').classList.toggle('hidden', isBobin);
+      document.getElementById('sub-bay-bobin-view').classList.toggle('hidden', !isBobin);
+
+      const housing = document.getElementById('meter-housing-panel');
+      const bezel = document.getElementById('timer-bezel');
+      const headerRow = document.getElementById('timer-header-row');
+      const headerDot = document.getElementById('timer-header-dot');
+      const headerTitle = document.getElementById('timer-header-title');
+      const scaleDot = document.getElementById('scale-dot');
+      const scaleTitle = document.getElementById('scale-title-label');
+      const accentBar = document.getElementById('timer-accent-bar');
+
+      if (isBobin) {
+        housing.className = "bauhaus-dash-panel rounded-2xl p-3.5 my-1 text-left relative overflow-hidden select-none space-y-2";
+        bezel.className = "bauhaus-cluster-bezel w-full py-2 px-2.5 flex flex-col items-center justify-center overflow-hidden";
+        headerRow.className = "w-full flex justify-between items-center text-[8px] font-mono text-[#ffbe7b]/80 px-1 mb-1";
+        headerDot.className = "w-1.5 h-1.5 bg-[#ff7722] rounded-full shadow-[0_0_5px_#ff7722]";
+        headerTitle.innerText = "CHRONOGRAPH // BOBIN";
+        scaleDot.className = "w-1.5 h-1.5 rounded-full bg-[#f4f3ee]";
+        scaleTitle.innerText = "HOROLOGY STATUS // 100% ➔ 0%";
+        accentBar.className = "w-1/2 h-[2px] bg-[#ff5511] rounded-full mt-1.5 shadow-[0_0_6px_rgba(255,85,17,0.5)]";
+      } else {
+        housing.className = "piazza-jet-black-panel cockpit-grid-bg rounded-2xl p-3.5 my-1 text-left relative overflow-hidden select-none space-y-2.5";
+        bezel.className = "piazza-speed-bezel w-full py-2.5 px-3 flex flex-col items-center justify-center overflow-hidden";
+        headerRow.className = "w-full flex justify-between items-center text-[8px] font-mono text-[#00ff66]/70 px-1 mb-0.5";
+        headerDot.className = "w-1.5 h-1.5 bg-[#00ff66] rounded-sm";
+        headerTitle.innerText = "FOCUS DURATION";
+        scaleDot.className = "w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-pulse";
+        scaleTitle.innerText = "REMAINING SCALE // 100% ➔ 0%";
+        accentBar.className = "w-1/2 h-[2px] bg-[#ff3311] rounded-full mt-0.5 shadow-[0_0_6px_#ff3311]";
+      }
+    }
+
+    function setMeterMode(mode) {
+      if (meterMode === mode) return;
+      playWarmTap();
+      meterMode = mode;
+      safeStorageSet('booster_meter_mode', mode);
+      applyMeterModeUI();
+      updateClock();
+      renderCurrentTask();
+    }
+
+    // ===== ボビン回転ドラム構築（ARVIL数字・暗色パネル近似背景＋電球バックライトオレンジ） =====
+    const BOBIN_PX_PER_UNIT = 26;
+    const BOBIN_LEFT_MIN = -4;
+    const BOBIN_LEFT_MAX = 103;   // 0..99 + 左右バッファ
+    const BOBIN_RIGHT_MIN = -5;
+    const BOBIN_RIGHT_MAX = 64;   // 0..59 + 左右ループ用バッファ (55..59, 0..59, 0..4)
+
+    function buildSingleBobinSvg(svgId, trackId, minVal, maxVal, isSecondsDrum) {
+      const svg = document.getElementById(svgId);
+      const track = document.getElementById(trackId);
+      if (!svg) return;
+      const totalWidth = (maxVal - minVal + 1) * BOBIN_PX_PER_UNIT;
+      svg.setAttribute('width', totalWidth);
+      svg.setAttribute('viewBox', `0 0 ${totalWidth} 76`);
+      if (track) track.style.width = `${totalWidth}px`;
+
+      let markup = '';
+
+      // 残り0〜10を示す細身のシグナルレッド基線（0〜10およびループ端60〜64）
+      if (isSecondsDrum) {
+        const xStart1 = (0 - minVal) * BOBIN_PX_PER_UNIT + BOBIN_PX_PER_UNIT / 2;
+        const xEnd1 = (10 - minVal) * BOBIN_PX_PER_UNIT + BOBIN_PX_PER_UNIT / 2;
+        markup += `<rect x="${xStart1}" y="11" width="${xEnd1 - xStart1}" height="2" fill="#ff3b1f" />`;
+        markup += `<rect x="${xStart1}" y="63" width="${xEnd1 - xStart1}" height="2" fill="#ff3b1f" />`;
+
+        const xStart2 = (60 - minVal) * BOBIN_PX_PER_UNIT + BOBIN_PX_PER_UNIT / 2;
+        const xEnd2 = (maxVal - minVal + 1) * BOBIN_PX_PER_UNIT;
+        markup += `<rect x="${xStart2}" y="11" width="${xEnd2 - xStart2}" height="2" fill="#ff3b1f" />`;
+        markup += `<rect x="${xStart2}" y="63" width="${xEnd2 - xStart2}" height="2" fill="#ff3b1f" />`;
+      }
+
+      for (let raw = minVal; raw <= maxVal; raw++) {
+        const displayNum = ((raw % 60) + 60) % 60;
+        const val = isSecondsDrum ? displayNum : raw;
+        if (!isSecondsDrum && (raw < 0 || raw > 99)) continue;
+
+        const cx = (raw - minVal) * BOBIN_PX_PER_UNIT + BOBIN_PX_PER_UNIT / 2;
+        const isFifth = (val % 5 === 0);
+        const isCritical = (isSecondsDrum && val <= 10);
+        const tickColor = isCritical ? '#ff3b1f' : (isFifth ? '#ff9d2e' : '#cc6814');
+
+        markup += `<line x1="${cx}" y1="0" x2="${cx}" y2="${isFifth ? 11 : 6}" stroke="${tickColor}" stroke-width="${isFifth ? 1.5 : 0.9}" />`;
+        markup += `<line x1="${cx}" y1="${isFifth ? 65 : 70}" x2="${cx}" y2="76" stroke="${tickColor}" stroke-width="${isFifth ? 1.5 : 0.9}" />`;
+
+        if (raw < maxVal) {
+          const halfX = cx + BOBIN_PX_PER_UNIT / 2;
+          markup += `<line x1="${halfX}" y1="0" x2="${halfX}" y2="3.5" stroke="#b35910" stroke-width="0.6" opacity="0.55" />`;
+          markup += `<line x1="${halfX}" y1="72.5" x2="${halfX}" y2="76" stroke="#b35910" stroke-width="0.6" opacity="0.55" />`;
+        }
+
+        const label = String(val);
+        const fontSize = label.length >= 2 ? (isFifth ? 24 : 21) : (isFifth ? 26 : 23);
+        const numColor = isCritical ? '#ff4422' : (isFifth ? '#ffb84d' : '#ff9426');
+
+        markup += `<text x="${cx}" y="46.5" text-anchor="middle" font-family="'Arvil Sans', 'Barlow Condensed', sans-serif" font-weight="${isFifth ? 700 : 500}" font-size="${fontSize}" fill="${numColor}" letter-spacing="-0.2">${label}</text>`;
+      }
+
+      svg.innerHTML = markup;
+    }
+
+    function buildHorizontalBobinDrums() {
+      buildSingleBobinSvg('bobin-left-svg', 'bobin-left-track', BOBIN_LEFT_MIN, BOBIN_LEFT_MAX, false);
+      buildSingleBobinSvg('bobin-right-svg', 'bobin-right-track', BOBIN_RIGHT_MIN, BOBIN_RIGHT_MAX, true);
+    }
+
+    // 水平回転ボビンドラムの位置更新（左ドラムも右ドラムと連続連動）
+    function updateHorizontalBobinDrums(leftExactValue, rightExactValue) {
+      const leftTrack = document.getElementById('bobin-left-track');
+      const rightTrack = document.getElementById('bobin-right-track');
+
+      if (leftTrack) {
+        const clampedLeft = Math.max(0, Math.min(99, leftExactValue));
+        const leftCenterOffset = (clampedLeft - BOBIN_LEFT_MIN) * BOBIN_PX_PER_UNIT + BOBIN_PX_PER_UNIT / 2;
+        leftTrack.style.transform = `translate3d(-${leftCenterOffset}px, 0, 0)`;
+      }
+
+      if (rightTrack) {
+        const clampedRight = Math.max(0, Math.min(60, rightExactValue));
+        const rightCenterOffset = (clampedRight - BOBIN_RIGHT_MIN) * BOBIN_PX_PER_UNIT + BOBIN_PX_PER_UNIT / 2;
+        rightTrack.style.transform = `translate3d(-${rightCenterOffset}px, 0, 0)`;
+      }
+    }
+
+    // ボビン下部：直線状 28連セグメントLEDバー構築・更新
+    const BOBIN_LED_COUNT = 28;
+    function buildBobinLedBar() {
+      const grid = document.getElementById('bobin-led-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      for (let i = 0; i < BOBIN_LED_COUNT; i++) {
+        const cell = document.createElement('div');
+        cell.id = `bobin-led-cell-${i}`;
+        cell.className = 'bx-led-cell';
+        let color = '#00e868';
+        if (i >= 22) color = '#ff261b';
+        else if (i >= 15) color = '#ffaa00';
+        cell.setAttribute('data-color', color);
+        grid.appendChild(cell);
+      }
+    }
+
+    function updateBobinLedBar(elapsedRatio) {
+      const activeIdx = Math.min(BOBIN_LED_COUNT - 1, Math.floor(elapsedRatio * BOBIN_LED_COUNT));
+      for (let i = 0; i < BOBIN_LED_COUNT; i++) {
+        const cell = document.getElementById(`bobin-led-cell-${i}`);
+        if (!cell) continue;
+        const color = cell.getAttribute('data-color');
+
+        if (i < activeIdx) {
+          cell.style.backgroundColor = color;
+          cell.style.boxShadow = `0 0 6px ${color}`;
+          cell.style.color = color;
+          cell.classList.remove('led-blinking');
+        } else if (i === activeIdx) {
+          cell.style.backgroundColor = color;
+          cell.style.boxShadow = `0 0 8px ${color}`;
+          cell.style.color = color;
+          cell.classList.add('led-blinking');
+        } else {
+          cell.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+          cell.style.boxShadow = 'none';
+          cell.classList.remove('led-blinking');
+        }
+      }
+    }
+
+    // クラスター上部 警告灯（MAIN:赤 ／ SUB:青） ＆ 中央REM % オドメーター更新
+    function updateBauhausClusterMeta(remainingRatio, msStr, msActive, unitMode, isRunning, isExpired, hasMain, hasSub) {
+      const setCell = (id, activeClass) => {
+        const el = document.getElementById(id);
+        if (el) el.className = `bh-ind-cell ${activeClass || ''}`;
+      };
+      setCell('bh-ind-main', hasMain ? 'bh-ind-red' : '');
+      setCell('bh-ind-sub', hasSub ? 'bh-ind-blue' : '');
+      setCell('bh-ind-run', isRunning ? 'bh-ind-green' : '');
+      setCell('bh-ind-stop', isExpired ? 'bh-ind-red' : '');
+      setCell('bh-ind-hrs', unitMode === 'hrs' ? 'bh-ind-ivory' : '');
+      setCell('bh-ind-min', unitMode === 'min' ? 'bh-ind-ivory' : '');
+      setCell('bh-ind-sec', unitMode === 'sec' ? 'bh-ind-ivory' : '');
+
+      const remPct = Math.max(0, Math.min(100, Math.round(remainingRatio * 100)));
+      const bobinPctLabel = document.getElementById('bobin-pct-label');
+      if (bobinPctLabel) bobinPctLabel.innerText = `${remPct}%`;
+
+      const pctStr = String(remPct).padStart(3, '0');
+      const p0 = document.getElementById('bh-pct-0');
+      const p1 = document.getElementById('bh-pct-1');
+      const p2 = document.getElementById('bh-pct-2');
+      if (p0) p0.innerText = pctStr[0];
+      if (p1) p1.innerText = pctStr[1];
+      if (p2) p2.innerText = pctStr[2];
+
+      const leftLabel = document.getElementById('bobin-left-label');
+      const rightLabel = document.getElementById('bobin-right-label');
+      if (unitMode === 'hrs') {
+        if (leftLabel) leftLabel.innerText = 'hrs';
+        if (rightLabel) rightLabel.innerText = 'min';
+      } else {
+        if (leftLabel) leftLabel.innerText = 'min';
+        if (rightLabel) rightLabel.innerText = 'sec';
+      }
+    }
+
     // メインタイマー左横の14セグメント単位表示（HRS / MIN / SEC）更新
     function setTimerUnitSegments(mode) {
       const baseClass = "vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest transition-all duration-300 leading-none";
@@ -955,7 +1700,7 @@
       }
     }
 
-    // クロック更新（トップバー：24時間 / メーター内：12時間 ＆ AM/PM ＆ 日付MM.DD ＆ 曜日14セグ）
+    // クロック更新（トップバー：24時間 / VFD時計 ＆ ボビンモードVFD時計同時更新）
     const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
     function updateClock() {
       const now = new Date();
@@ -978,6 +1723,7 @@
       const time12Str = `${hh}:${mm}:${ss}`;
       const dateStr = `${m}.${d}`;
 
+      // VFD時計更新
       const subClockDate = document.getElementById('sub-clock-date');
       const subClockDaySeg = document.getElementById('sub-clock-day-seg');
       const subClockAmPm = document.getElementById('sub-clock-ampm');
@@ -987,9 +1733,18 @@
       if (subClockDaySeg) subClockDaySeg.innerText = day;
       if (subClockAmPm) subClockAmPm.innerText = ampm;
       if (subClockTime) subClockTime.innerText = time12Str;
+
+      // ボビンモード VFD時計更新
+      const lcdClockDate = document.getElementById('lcd-clock-date');
+      const lcdClockDaySeg = document.getElementById('lcd-clock-day-seg');
+      const lcdClockAmPm = document.getElementById('lcd-clock-ampm');
+      const lcdClockTime = document.getElementById('lcd-clock-time');
+
+      if (lcdClockDate) lcdClockDate.innerText = dateStr;
+      if (lcdClockDaySeg) lcdClockDaySeg.innerText = day;
+      if (lcdClockAmPm) lcdClockAmPm.innerText = ampm;
+      if (lcdClockTime) lcdClockTime.innerText = time12Str;
     }
-    setInterval(updateClock, 1000);
-    updateClock();
 
     const defaultWeeklyRoutines = {
       0: ["来週のスケジュール確認", "体調管理・ストレッチ"],
@@ -1001,7 +1756,7 @@
       6: ["デスク片付け", "リフレッシュ"]
     };
 
-    let weeklyRoutines = JSON.parse(localStorage.getItem('booster_weekly_routines')) || defaultWeeklyRoutines;
+    let weeklyRoutines = safeJsonGet('booster_weekly_routines', defaultWeeklyRoutines);
     let editingDay = new Date().getDay();
 
     function openRoutineModal() {
@@ -1027,14 +1782,14 @@
     function saveRoutineForDay() {
       playWarmMajorBrass();
       weeklyRoutines[editingDay] = document.getElementById('routine-textarea').value.split('\n').map(s => s.trim()).filter(Boolean);
-      localStorage.setItem('booster_weekly_routines', JSON.stringify(weeklyRoutines));
+      safeStorageSet('booster_weekly_routines', JSON.stringify(weeklyRoutines));
       closeRoutineModal();
       checkAndInjectDailyRoutines();
     }
 
     function checkAndInjectDailyRoutines() {
       const today = new Date().toDateString();
-      if (localStorage.getItem('booster_last_routine_date') !== today) {
+      if (safeStorageGet('booster_last_routine_date') !== today) {
         const routinesForToday = weeklyRoutines[new Date().getDay()] || [];
         routinesForToday.forEach(title => {
           tasks.unshift({
@@ -1048,7 +1803,7 @@
             createdAt: Date.now()
           });
         });
-        localStorage.setItem('booster_last_routine_date', today);
+        safeStorageSet('booster_last_routine_date', today);
         saveAndRefresh();
       }
     }
@@ -1094,8 +1849,8 @@
       specificDeadlineTime = val || null;
     }
 
-    let tasks = JSON.parse(localStorage.getItem('booster_tasks')) || [];
-    let streak = parseInt(localStorage.getItem('booster_streak') || '0', 10);
+    let tasks = safeJsonGet('booster_tasks', []);
+    let streak = parseInt(safeStorageGet('booster_streak') || '0', 10);
     let hasNotifiedCurrentTask = false;
 
     // 上部折れ線バー幾何計算
@@ -1123,6 +1878,7 @@
 
     function buildLedMatrix() {
       const container = document.getElementById('led-matrix-chips');
+      if (!container) return;
       container.innerHTML = '';
       for (let i = 0; i < LED_COUNT; i++) {
         const t = i / (LED_COUNT - 1);
@@ -1255,7 +2011,7 @@
     }
 
     function saveAndRefresh() {
-      localStorage.setItem('booster_tasks', JSON.stringify(tasks));
+      safeStorageSet('booster_tasks', JSON.stringify(tasks));
       renderCurrentTask();
       renderQueueList();
       syncAppBadge();
@@ -1340,27 +2096,31 @@
       const remainingMain = tasks.filter(t => t.date === todayStr && t.type === 'main');
       const todaySub = tasks.filter(t => t.date === todayStr && t.type === 'sub');
       const todayRemainingCount = tasks.filter(t => t.date === todayStr).length;
+      const hasMain = remainingMain.length > 0;
+      const hasSub = todaySub.length > 0;
 
-      // 残り総タスク数
-      document.getElementById('seg-remaining-tasks').innerText = String(todayRemainingCount).padStart(2, '0');
+      const countStr = String(todayRemainingCount).padStart(2, '0');
 
-      // MAIN ステータスセグメント表示
+      // VFD ＆ ボビンモードVFD 残り総タスク数
+      document.getElementById('seg-remaining-tasks').innerText = countStr;
+      const lcdRemTasks = document.getElementById('lcd-remaining-tasks');
+      if (lcdRemTasks) lcdRemTasks.innerText = countStr;
+
+      // VFD MAIN / SUB / LEFT セグメント表示
       const mainSeg = document.getElementById('seg-status-main');
-      if (remainingMain.length > 0) {
+      if (hasMain) {
         mainSeg.className = "vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow";
       } else {
         mainSeg.className = "vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-ghost";
       }
 
-      // SUB ステータスセグメント表示
       const subSeg = document.getElementById('seg-status-sub');
-      if (todaySub.length > 0) {
+      if (hasSub) {
         subSeg.className = "vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow";
       } else {
         subSeg.className = "vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-ghost";
       }
 
-      // ★ LEFT セグメント表示（残タスクがあれば赤点灯、全完了なら消灯）
       const leftSeg = document.getElementById('seg-status-left');
       if (todayRemainingCount > 0) {
         leftSeg.className = "vfd-segment-14 text-[8.5px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-300";
@@ -1368,17 +2128,31 @@
         leftSeg.className = "vfd-segment-14 text-[8.5px] font-bold select-none tracking-widest vfd-red-ghost transition-all duration-300";
       }
 
+      // ボビンモード 蛍光管（VFD） MAIN / SUB / LEFT セグメント表示（オレンジ）
+      const lcdMain = document.getElementById('lcd-status-main');
+      const lcdSub = document.getElementById('lcd-status-sub');
+      const lcdLeft = document.getElementById('lcd-status-left');
+      if (lcdMain) {
+        lcdMain.className = `vfd-segment-14 text-[8px] font-bold select-none tracking-widest transition-all duration-300 ${hasMain ? 'vfd-orange-glow' : 'vfd-orange-ghost'}`;
+      }
+      if (lcdSub) {
+        lcdSub.className = `vfd-segment-14 text-[8px] font-bold select-none tracking-widest transition-all duration-300 ${hasSub ? 'vfd-orange-glow' : 'vfd-orange-ghost'}`;
+      }
+      if (lcdLeft) {
+        lcdLeft.className = `vfd-segment-14 text-[8.5px] font-bold select-none tracking-widest transition-all duration-300 ${todayRemainingCount > 0 ? 'vfd-orange-glow' : 'vfd-orange-ghost'}`;
+      }
+
       let current = null;
-      if (remainingMain.length > 0) {
+      if (hasMain) {
         current = remainingMain[0];
         document.getElementById('gatekeeper-warning').classList.remove('hidden');
         document.getElementById('status-badge').innerText = "● MAIN ROUTINE (PRIORITY)";
-        document.getElementById('status-badge').className = "text-[9px] font-extrabold tracking-widest text-amber-700 bg-amber-50 border border-amber-300 px-3 py-0.5 rounded-full uppercase";
-      } else if (todaySub.length > 0) {
+        document.getElementById('status-badge').className = "text-[9px] font-extrabold tracking-widest text-amber-700 bg-amber-50 border border-amber-300 px-2.5 py-0.5 rounded-full uppercase truncate";
+      } else if (hasSub) {
         current = todaySub[0];
         document.getElementById('gatekeeper-warning').classList.add('hidden');
         document.getElementById('status-badge').innerText = "● ACTIVE FOCUS";
-        document.getElementById('status-badge').className = "text-[9px] font-extrabold tracking-widest text-[#0055ff] bg-blue-50 border border-blue-200 px-3 py-0.5 rounded-full uppercase";
+        document.getElementById('status-badge').className = "text-[9px] font-extrabold tracking-widest text-[#0055ff] bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase truncate";
       } else {
         document.getElementById('gatekeeper-warning').classList.add('hidden');
         document.getElementById('current-task-title').innerText = "NO SCHEDULED OPERATIONS";
@@ -1387,14 +2161,17 @@
         document.getElementById('timer-unit-label').innerText = "MIN:SEC";
         setTimerUnitSegments('off');
         setTimerMsDisplay(false, "");
+        updateHorizontalBobinDrums(0, 0);
+        updateBauhausClusterMeta(0, "", false, 'off', false, false, false, false);
         
         updateLedMatrix(1.0);
+        updateBobinLedBar(1.0);
 
         document.getElementById('progress-pct-label').innerText = "0%";
         document.getElementById('target-deadline-badge').innerText = "ALL DONE";
         document.getElementById('action-buttons').classList.add('hidden');
         document.getElementById('status-badge').innerText = "● ALL CLEAR";
-        document.getElementById('status-badge').className = "text-[9px] font-extrabold tracking-widest text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-0.5 rounded-full uppercase";
+        document.getElementById('status-badge').className = "text-[9px] font-extrabold tracking-widest text-emerald-600 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full uppercase truncate";
         return;
       }
 
@@ -1414,7 +2191,7 @@
         current.notifyOffsets = getNotificationOffsetsForRemainingMs(current.targetTime - Date.now());
         current.firedOffsets = current.firedOffsets || [];
         hasNotifiedCurrentTask = false;
-        localStorage.setItem('booster_tasks', JSON.stringify(tasks));
+        safeStorageSet('booster_tasks', JSON.stringify(tasks));
       }
 
       if (!Array.isArray(current.notifyOffsets)) {
@@ -1435,6 +2212,8 @@
       document.getElementById('action-buttons').classList.remove('hidden');
 
       let lastSecBucket = null;
+      let currentUnitMode = "off";
+      let currentRemainingRatio = 1.0;
 
       const startRafIfSubHour = () => {
         if (timerRafId !== null) return;
@@ -1453,29 +2232,43 @@
       const update = () => {
         const diff = current.targetTime - Date.now();
         if (diff > 0) {
+          const totalSpan = current.targetTime - current.createdAt;
+          currentRemainingRatio = totalSpan > 0 ? Math.max(0, Math.min(1, diff / totalSpan)) : 0;
+          const elapsedRatio = 1.0 - currentRemainingRatio;
+
+          // 左ドラム（分・時間）も右ドラム（秒・分）の進行に連動して連続的かつ滑らかに回転させる
+          if (diff < 3600000) {
+            const exactTotalMins = diff / 60000;
+            const exactSec = (diff % 60000) / 1000;
+            updateHorizontalBobinDrums(exactTotalMins, exactSec);
+          } else {
+            const exactTotalHours = diff / 3600000;
+            const exactMins = (diff % 3600000) / 60000;
+            updateHorizontalBobinDrums(exactTotalHours, exactMins);
+          }
+
           const secBucket = Math.floor(diff / 1000);
           if (secBucket !== lastSecBucket) {
             lastSecBucket = secBucket;
-            const totalSpan = current.targetTime - current.createdAt;
-            const remainingRatio = totalSpan > 0 ? Math.max(0, Math.min(1, diff / totalSpan)) : 0;
-            
-            const elapsedRatio = 1.0 - remainingRatio;
             updateLedMatrix(elapsedRatio);
-            document.getElementById('progress-pct-label').innerText = `${Math.round(remainingRatio * 100)}%`;
+            updateBobinLedBar(elapsedRatio);
+            document.getElementById('progress-pct-label').innerText = `${Math.round(currentRemainingRatio * 100)}%`;
 
             const unitLabel = document.getElementById('timer-unit-label');
             if (diff >= 3600000) {
               const hours = Math.floor(diff / 3600000);
               const mins = Math.floor((diff % 3600000) / 60000);
+              currentUnitMode = 'hrs';
               document.getElementById('time-left').innerText = `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}`;
               if (unitLabel) unitLabel.innerText = "HRS:MIN";
               setTimerUnitSegments('hrs');
             } else {
               const min = Math.floor(diff / 60000);
               const sec = Math.floor((diff % 60000) / 1000);
+              currentUnitMode = diff >= 60000 ? 'min' : 'sec';
               document.getElementById('time-left').innerText = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
               if (unitLabel) unitLabel.innerText = "MIN:SEC";
-              setTimerUnitSegments(diff >= 60000 ? 'min' : 'sec');
+              setTimerUnitSegments(currentUnitMode);
             }
 
             // 残り時間別の段階的通知（起動中・フォアグラウンド時）
@@ -1484,7 +2277,7 @@
               const thresholdMs = offsetMin * 60000;
               if (diff <= thresholdMs && diff > Math.max(0, thresholdMs - 60000)) {
                 current.firedOffsets.push(offsetMin);
-                localStorage.setItem('booster_tasks', JSON.stringify(tasks));
+                safeStorageSet('booster_tasks', JSON.stringify(tasks));
                 playWarmTap();
                 sendSystemNotification("FOCUS", `未完了タスクあり（残り${offsetMin}分）: ${current.title}`, {
                   tag: `focus-task-${current.id}-${offsetMin}`,
@@ -1497,16 +2290,21 @@
             document.getElementById('cheer-message').innerText = current.type === 'main' ? "MANDATORY ROUTINE ENGAGED" : "CONCENTRATE ON CURRENT OPERATION";
           }
 
-          // 残り1時間未満の場合は2桁ミリ秒（00〜99）を表示＆高フレームレート更新
+          // VFDモード用：残り1時間未満の場合は2桁ミリ秒（00〜99）を表示＆高フレームレート更新
           if (diff < 3600000) {
-            const centisec = Math.floor((diff % 1000) / 10);
-            setTimerMsDisplay(true, String(centisec).padStart(2, '0'));
+            const msStr = String(Math.floor((diff % 1000) / 10)).padStart(2, '0');
+            setTimerMsDisplay(true, msStr);
+            updateBauhausClusterMeta(currentRemainingRatio, msStr, true, currentUnitMode, true, false, hasMain, hasSub);
             startRafIfSubHour();
           } else {
             setTimerMsDisplay(false, "");
+            updateBauhausClusterMeta(currentRemainingRatio, "", false, currentUnitMode, true, false, hasMain, hasSub);
           }
         } else {
           updateLedMatrix(1.0);
+          updateBobinLedBar(1.0);
+          updateHorizontalBobinDrums(0, 0);
+          updateBauhausClusterMeta(0, "", false, 'off', false, true, hasMain, hasSub);
           document.getElementById('progress-pct-label').innerText = "0%";
           document.getElementById('time-left').innerText = "00:00";
           document.getElementById('timer-unit-label').innerText = "MIN:SEC";
@@ -1520,7 +2318,7 @@
             const isZeroTarget = current.notifyOffsets.includes(0) && !current.firedOffsets.includes(0);
             if (isZeroTarget) {
               current.firedOffsets.push(0);
-              localStorage.setItem('booster_tasks', JSON.stringify(tasks));
+              safeStorageSet('booster_tasks', JSON.stringify(tasks));
             }
             const bodyText = isZeroTarget
               ? `未完了タスクあり（残り時間0分0秒）: ${current.title}`
@@ -1545,7 +2343,11 @@
 
     function openCompletionModal() {
       playCGHEAmbient();
-      confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 }, colors: ['#00ff66', '#ff2233', '#1a1b1e', '#ff3311'] });
+      if (typeof confetti === 'function') {
+        try {
+          confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 }, colors: ['#00ff66', '#ff2233', '#1a1b1e', '#ff3311'] });
+        } catch (_) {}
+      }
       
       const p = praises[Math.floor(Math.random() * praises.length)];
       document.getElementById('praise-text').innerHTML = `
@@ -1571,7 +2373,7 @@
 
       if (targetIdx !== -1) tasks.splice(targetIdx, 1);
       streak++;
-      localStorage.setItem('booster_streak', streak);
+      safeStorageSet('booster_streak', streak);
       document.getElementById('streak-count').innerText = streak;
       document.getElementById('check-modal').classList.add('hidden');
       hasNotifiedCurrentTask = false;
@@ -1608,7 +2410,7 @@
       "次の予定・会議の時間は確認した？",
       "ファイルの保存・共有はOK？"
     ];
-    let workChecks = JSON.parse(localStorage.getItem('booster_work_checks')) || defaultWorkChecks;
+    let workChecks = safeJsonGet('booster_work_checks', defaultWorkChecks);
 
     function renderWorkChecklist() {
       const container = document.getElementById('work-checklist-container');
@@ -1639,7 +2441,7 @@
       const updated = prompt("チェック項目を編集してください：", currentText);
       if (updated !== null && updated.trim() !== "") {
         workChecks[idx] = updated.trim();
-        localStorage.setItem('booster_work_checks', JSON.stringify(workChecks));
+        safeStorageSet('booster_work_checks', JSON.stringify(workChecks));
         renderWorkChecklist();
       }
     }
@@ -1648,7 +2450,7 @@
       playWarmTap();
       if (confirm(`「${workChecks[idx]}」を削除しますか？`)) {
         workChecks.splice(idx, 1);
-        localStorage.setItem('booster_work_checks', JSON.stringify(workChecks));
+        safeStorageSet('booster_work_checks', JSON.stringify(workChecks));
         renderWorkChecklist();
       }
     }
@@ -1658,7 +2460,7 @@
       const newItem = prompt("追加するチェック項目を入力してください：");
       if (newItem !== null && newItem.trim() !== "") {
         workChecks.push(newItem.trim());
-        localStorage.setItem('booster_work_checks', JSON.stringify(workChecks));
+        safeStorageSet('booster_work_checks', JSON.stringify(workChecks));
         renderWorkChecklist();
       }
     }
@@ -1762,6 +2564,11 @@
       }
     });
     buildLedMatrix();
+    buildBobinLedBar();
+    buildHorizontalBobinDrums();
+    applyMeterModeUI();
+    updateClock();
+    setInterval(updateClock, 1000);
     setTargetDay(0);
     setQuickTime(15);
     checkAndInjectDailyRoutines();
