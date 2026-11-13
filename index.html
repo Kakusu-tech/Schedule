@@ -69,10 +69,10 @@
       transition: background 0.25s ease, border-color 0.25s ease;
     }
 
-    /* ボビンモード：シトロエンBX／ジウジアーロ風 マットガンメタル時計筐体 */
+    /* ボビンモード：シトロエンBX／ジウジアーロ風 マットガンメタル時計筐体（VFDと同枠サイズ） */
     .bauhaus-dash-panel {
       background: linear-gradient(172deg, #1d2027 0%, #111318 48%, #090a0d 100%);
-      border: 1.5px solid #2b303c;
+      border: 2px solid #2b303c;
       border-top-color: #3f4554;
       box-shadow:
         inset 0 8px 20px rgba(0, 0, 0, 0.94),
@@ -184,66 +184,6 @@
     }
     .led-blinking {
       animation: ledChipBlink 0.75s ease-in-out infinite;
-    }
-
-    /* ===== ボビンモード：クラスター上部 警告灯群 ===== */
-    .bx-warning-deck {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr) 6px repeat(3, 1fr);
-      align-items: center;
-      gap: 3px;
-      background: #060709;
-      padding: 4px;
-      border-radius: 6px;
-      border: 1px solid #262b35;
-      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.9);
-    }
-    .bx-warning-divider {
-      width: 2px;
-      height: 14px;
-      margin: 0 auto;
-      background: #232732;
-      border-radius: 1px;
-    }
-    .bh-ind-cell {
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      border-radius: 2px;
-      border: 1px solid #1a1e26;
-      background: linear-gradient(180deg, #101217 0%, #090a0d 100%);
-      color: rgba(255, 255, 255, 0.16);
-      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.85);
-      transition: all 0.2s ease;
-    }
-    .bh-ind-ivory {
-      background: radial-gradient(circle at 50% 50%, #ffcf87 0%, #ff9326 65%, #c75b0a 100%);
-      color: #1c0c02;
-      border-color: #ffb85c;
-      box-shadow: 0 0 8px rgba(255, 145, 35, 0.55), inset 0 0 4px rgba(255, 240, 200, 0.65);
-    }
-    .bh-ind-blue {
-      background: radial-gradient(circle at 50% 50%, #4da6ff 0%, #0066ff 70%, #003cb3 100%);
-      color: #ffffff;
-      border-color: #66b2ff;
-      box-shadow: 0 0 8px rgba(0, 115, 255, 0.55);
-    }
-    .bh-ind-green {
-      background: radial-gradient(circle at 50% 50%, #34f59e 0%, #00b85c 70%, #007539 100%);
-      color: #022614;
-      border-color: #4dffa6;
-      box-shadow: 0 0 8px rgba(0, 210, 100, 0.5);
-    }
-    .bh-ind-red {
-      background: radial-gradient(circle at 50% 50%, #ff5533 0%, #e61c00 72%, #990d00 100%);
-      color: #ffffff;
-      border-color: #ff7755;
-      box-shadow: 0 0 9px rgba(255, 45, 20, 0.65);
     }
 
     /* 精密切削アパーチャー（パネル近似色の暗色ドラム＋電球バックライトのオレンジ数字） */
@@ -401,7 +341,7 @@
       display: grid;
       grid-template-columns: 1fr 1.6fr 1fr;
       gap: 4px;
-      padding: 2px 4px;
+      padding: 1px 4px;
       background: #0a0b0e;
       border-top: 1px solid #2b303b;
       border-bottom: 1px solid #252932;
@@ -419,18 +359,28 @@
       background: linear-gradient(180deg, #07090b 0%, #030405 100%);
       border: 1px solid #252a34;
       border-radius: 7px;
-      padding: 6px 8px 5px;
+      padding: 4px 8px 4px;
       box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.95);
+    }
+    @media (min-width: 640px) {
+      .bx-led-bar-housing {
+        padding: 5px 8px 5px;
+      }
     }
     .bx-led-grid {
       display: grid;
       grid-template-columns: repeat(28, 1fr);
       gap: 2px;
-      height: 10px;
+      height: 9px;
       padding: 1.5px 2px;
       background: #040506;
       border: 1px solid #1a1f26;
       border-radius: 3px;
+    }
+    @media (min-width: 640px) {
+      .bx-led-grid {
+        height: 10px;
+      }
     }
     .bx-led-cell {
       border-radius: 1px;
@@ -533,11 +483,11 @@
       </p>
     </div>
 
-    <!-- 計器パネル（VFD: 漆黒 ／ BOBIN: BX／ジウジアーロ マットガンメタル） -->
+    <!-- 計器パネル（VFD: 漆黒 ／ BOBIN: BX／ジウジアーロ マットガンメタル、VFDと同フレームサイズ） -->
     <div id="meter-housing-panel" class="piazza-jet-black-panel cockpit-grid-bg rounded-2xl p-3.5 my-1 text-left relative overflow-hidden select-none space-y-2.5">
       
-      <!-- 【1. 上部】スケール／警告灯クラスター部 -->
-      <div class="space-y-1">
+      <!-- 【1. 上部（VFDモード専用）】スケール部 -->
+      <div id="scale-top-section" class="space-y-1">
         <div id="scale-header-row" class="flex justify-between items-center text-[8px] font-mono text-slate-400 px-1">
           <span class="flex items-center gap-1.5 font-bold text-slate-300">
             <span id="scale-dot" class="w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-pulse"></span>
@@ -573,24 +523,10 @@
             <g id="led-matrix-chips"></g>
           </svg>
         </div>
-
-        <!-- (B) BOBINモード用：クラスター上部 各種警告灯群（MAIN:赤 ／ SUB:青） -->
-        <div id="scale-bobin-view" class="hidden">
-          <div class="bx-warning-deck">
-            <div id="bh-ind-main" class="bh-ind-cell">MAIN</div>
-            <div id="bh-ind-sub" class="bh-ind-cell">SUB</div>
-            <div id="bh-ind-run" class="bh-ind-cell">RUN</div>
-            <div id="bh-ind-stop" class="bh-ind-cell">STOP</div>
-            <div class="bx-warning-divider"></div>
-            <div id="bh-ind-hrs" class="bh-ind-cell">HRS</div>
-            <div id="bh-ind-min" class="bh-ind-cell">MIN</div>
-            <div id="bh-ind-sec" class="bh-ind-cell">SEC</div>
-          </div>
-        </div>
       </div>
 
       <!-- 【2. 中央】メイン・タイマー -->
-      <div id="timer-bezel" class="piazza-speed-bezel w-full py-2.5 px-3 flex flex-col items-center justify-center overflow-hidden">
+      <div id="timer-bezel" class="piazza-speed-bezel w-full py-2.5 px-2 sm:px-2.5 flex flex-col items-center justify-center overflow-hidden">
         <div class="w-full flex justify-between items-center text-[8px] font-mono text-[#00ff66]/70 px-1 mb-0.5" id="timer-header-row">
           <span class="flex items-center gap-1 font-bold">
             <span id="timer-header-dot" class="w-1.5 h-1.5 bg-[#00ff66] rounded-sm"></span>
@@ -599,11 +535,11 @@
           <span id="timer-unit-label" class="text-slate-400 font-bold uppercase tracking-wider">MIN:SEC</span>
         </div>
 
-        <!-- (A) VFDタイマービュー -->
+        <!-- (A) VFDタイマービュー（左右均等バランス配置） -->
         <div id="timer-vfd-view" class="w-full">
           <div class="grid grid-cols-[1fr_auto_1fr] items-center w-full py-1.5">
             <!-- 左横：単位識別 14セグメント表示（HRS / MIN / SEC） -->
-            <div class="flex flex-col items-end justify-center gap-0.5 pr-1.5 sm:pr-3">
+            <div class="flex flex-col items-center justify-center gap-0.5 pr-1.5 sm:pr-2">
               <span id="seg-timer-hrs" class="vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none">HRS</span>
               <span id="seg-timer-min" class="vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none">MIN</span>
               <span id="seg-timer-sec" class="vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none">SEC</span>
@@ -620,7 +556,7 @@
             </div>
 
             <!-- 右横：残り1時間未満で点灯する2桁ミリ秒7セグメント表示 -->
-            <div class="flex flex-col items-start justify-center pl-1.5 sm:pl-3">
+            <div class="flex flex-col items-center justify-center pl-1.5 sm:pl-2">
               <span id="seg-timer-ms" class="vfd-segment-14 text-[7px] sm:text-[8.5px] font-bold select-none tracking-widest vfd-green-ghost transition-all duration-300 leading-none mb-0.5">MS</span>
               <div class="relative flex items-baseline">
                 <span class="vfd-segment vfd-green-ghost text-base sm:text-xl font-bold tracking-normal select-none leading-none">
@@ -633,7 +569,7 @@
         </div>
 
         <!-- (B) BOBINタイマービュー：暗色回転パネル＋電球バックライトのオレンジ数字（ARVILフォント・ホワイト読み取り線） -->
-        <div id="timer-bobin-view" class="hidden w-full py-1">
+        <div id="timer-bobin-view" class="hidden w-full py-0.5 sm:py-1">
           <div class="grid grid-cols-[1fr_46px_1fr] items-center gap-1.5 w-full">
             
             <!-- 左ボビン窓（MIN または HRS の連続連動横回転ドラム） -->
@@ -679,20 +615,20 @@
       </div>
 
       <!-- 【2.5 BOBINモード用】水平セパレーター ＆ ボビンメーター下部の直線LEDバー残り時間計 -->
-      <div id="bobin-led-section" class="hidden space-y-1.5">
+      <div id="bobin-led-section" class="hidden space-y-1 sm:space-y-1.5">
         <div class="bx-divider-rail">
           <div class="bx-divider-slot"></div>
           <div class="bx-divider-slot"></div>
           <div class="bx-divider-slot"></div>
         </div>
 
-        <div class="bx-led-bar-housing space-y-1">
-          <div class="flex justify-between items-center text-[7.5px] font-mono text-slate-400 px-0.5">
+        <div class="bx-led-bar-housing space-y-0.5 sm:space-y-1">
+          <div class="flex justify-between items-center text-[7.5px] font-mono text-slate-400 px-0.5 leading-none">
             <span class="flex items-center gap-1.5 font-bold text-slate-300">
               <span class="w-1.5 h-1.5 rounded-full bg-[#00e868]"></span>
               <span>REMAINING SCALE // 100% ➔ 0%</span>
             </span>
-            <span id="bobin-pct-label" class="text-[#ffaa55] font-bold" style="font-family: 'Arvil Sans', 'Barlow Condensed', sans-serif; font-size: 10px;">100%</span>
+            <span id="bobin-pct-label" class="text-[#ffaa55] font-bold leading-none" style="font-family: 'Arvil Sans', 'Barlow Condensed', sans-serif; font-size: 10px;">100%</span>
           </div>
 
           <div id="bobin-led-grid" class="bx-led-grid"></div>
@@ -1011,6 +947,8 @@
     let timerInterval = null;
     let timerRafId = null;
     let meterMode = safeStorageGet('booster_meter_mode') || 'bobin';
+    let isVfdOpeningPlaying = false;
+    let vfdOpeningTimeoutIds = [];
 
     function escapeHtml(str) {
       return String(str)
@@ -1464,9 +1402,7 @@
           : "px-1.5 py-0.5 rounded text-slate-500 hover:text-black transition";
       }
 
-      document.getElementById('scale-header-row').classList.toggle('hidden', isBobin);
-      document.getElementById('scale-vfd-view').classList.toggle('hidden', isBobin);
-      document.getElementById('scale-bobin-view').classList.toggle('hidden', !isBobin);
+      document.getElementById('scale-top-section').classList.toggle('hidden', isBobin);
       document.getElementById('timer-vfd-view').classList.toggle('hidden', isBobin);
       document.getElementById('timer-bobin-view').classList.toggle('hidden', !isBobin);
       document.getElementById('bobin-led-section').classList.toggle('hidden', !isBobin);
@@ -1483,17 +1419,17 @@
       const accentBar = document.getElementById('timer-accent-bar');
 
       if (isBobin) {
-        housing.className = "bauhaus-dash-panel rounded-2xl p-3.5 my-1 text-left relative overflow-hidden select-none space-y-2";
-        bezel.className = "bauhaus-cluster-bezel w-full py-2 px-2.5 flex flex-col items-center justify-center overflow-hidden";
-        headerRow.className = "w-full flex justify-between items-center text-[8px] font-mono text-[#ffbe7b]/80 px-1 mb-1";
+        housing.className = "bauhaus-dash-panel rounded-2xl p-3.5 my-1 text-left relative overflow-hidden select-none space-y-2 sm:space-y-2.5";
+        bezel.className = "bauhaus-cluster-bezel w-full py-1.5 sm:py-2 px-2.5 flex flex-col items-center justify-center overflow-hidden";
+        headerRow.className = "w-full flex justify-between items-center text-[8px] font-mono text-[#ffbe7b]/80 px-1 mb-0.5";
         headerDot.className = "w-1.5 h-1.5 bg-[#ff7722] rounded-full shadow-[0_0_5px_#ff7722]";
         headerTitle.innerText = "CHRONOGRAPH // BOBIN";
         scaleDot.className = "w-1.5 h-1.5 rounded-full bg-[#f4f3ee]";
         scaleTitle.innerText = "HOROLOGY STATUS // 100% ➔ 0%";
-        accentBar.className = "w-1/2 h-[2px] bg-[#ff5511] rounded-full mt-1.5 shadow-[0_0_6px_rgba(255,85,17,0.5)]";
+        accentBar.className = "w-1/2 h-[2px] bg-[#ff5511] rounded-full mt-1 shadow-[0_0_6px_rgba(255,85,17,0.5)]";
       } else {
         housing.className = "piazza-jet-black-panel cockpit-grid-bg rounded-2xl p-3.5 my-1 text-left relative overflow-hidden select-none space-y-2.5";
-        bezel.className = "piazza-speed-bezel w-full py-2.5 px-3 flex flex-col items-center justify-center overflow-hidden";
+        bezel.className = "piazza-speed-bezel w-full py-2.5 px-2 sm:px-2.5 flex flex-col items-center justify-center overflow-hidden";
         headerRow.className = "w-full flex justify-between items-center text-[8px] font-mono text-[#00ff66]/70 px-1 mb-0.5";
         headerDot.className = "w-1.5 h-1.5 bg-[#00ff66] rounded-sm";
         headerTitle.innerText = "FOCUS DURATION";
@@ -1503,14 +1439,109 @@
       }
     }
 
+    function cancelVfdOpening() {
+      if (!isVfdOpeningPlaying && vfdOpeningTimeoutIds.length === 0) return;
+      vfdOpeningTimeoutIds.forEach((id) => clearTimeout(id));
+      vfdOpeningTimeoutIds = [];
+      isVfdOpeningPlaying = false;
+    }
+
+    // VFDモード専用：1日1回の初回起動時 点灯試験風オープニング演出
+    function maybeStartVfdOpening() {
+      if (meterMode !== 'vfd') return;
+      const todayKey = getFormattedDate(0);
+      if (safeStorageGet('booster_vfd_last_opening_date') === todayKey) return;
+
+      cancelVfdOpening();
+      safeStorageSet('booster_vfd_last_opening_date', todayKey);
+
+      clearInterval(timerInterval);
+      timerInterval = null;
+      cancelAnimationFrame(timerRafId);
+      timerRafId = null;
+      isVfdOpeningPlaying = true;
+
+      // 文字セグメント全点灯（メインタイマー単位 ＆ タスクカウンタステータス）
+      const timerUnitBase = "vfd-segment-14 text-[8px] sm:text-[9.5px] font-bold select-none tracking-widest transition-all duration-150 leading-none vfd-green-glow";
+      ['seg-timer-hrs', 'seg-timer-min', 'seg-timer-sec'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.className = timerUnitBase;
+      });
+      const msLabelEl = document.getElementById('seg-timer-ms');
+      if (msLabelEl) {
+        msLabelEl.className = "vfd-segment-14 text-[7px] sm:text-[8.5px] font-bold select-none tracking-widest transition-all duration-150 leading-none mb-0.5 vfd-green-glow";
+      }
+
+      const mainSeg = document.getElementById('seg-status-main');
+      const subSeg = document.getElementById('seg-status-sub');
+      const leftSeg = document.getElementById('seg-status-left');
+      if (mainSeg) mainSeg.className = "vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-150";
+      if (subSeg) subSeg.className = "vfd-segment-14 text-[8px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-150";
+      if (leftSeg) leftSeg.className = "vfd-segment-14 text-[8.5px] font-bold select-none tracking-widest vfd-red-glow transition-all duration-150";
+
+      const digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+      const stepMs = 240;
+
+      const applyOpeningStep = (k) => {
+        const d = digits[k];
+        const dd = `${d}${d}`;
+        const timeEl = document.getElementById('time-left');
+        const msEl = document.getElementById('time-ms');
+        const taskEl = document.getElementById('seg-remaining-tasks');
+        const pctEl = document.getElementById('progress-pct-label');
+
+        if (timeEl) timeEl.innerText = `${dd}:${dd}`;
+        if (msEl) msEl.innerText = dd;
+        if (taskEl) taskEl.innerText = dd;
+        if (pctEl) pctEl.innerText = `${100 - (k + 1) * 10}%`;
+
+        // 折れ線グラフを数字進行（1→9→0）と連動して順番に点灯
+        const litEndIndex = Math.round(((k + 1) / digits.length) * LED_COUNT) - 1;
+        for (let i = 0; i < LED_COUNT; i++) {
+          const diode = document.getElementById(`led-diode-${i}`);
+          if (!diode) continue;
+          const color = diode.getAttribute('data-color');
+          if (i <= litEndIndex) {
+            diode.setAttribute('fill', color);
+            diode.style.filter = `drop-shadow(0 0 3px ${color})`;
+            diode.style.color = color;
+            diode.classList.remove('led-blinking');
+          } else {
+            diode.setAttribute('fill', 'transparent');
+            diode.style.filter = 'none';
+            diode.classList.remove('led-blinking');
+          }
+        }
+      };
+
+      applyOpeningStep(0);
+
+      for (let k = 1; k < digits.length; k++) {
+        const tid = setTimeout(() => {
+          if (!isVfdOpeningPlaying) return;
+          applyOpeningStep(k);
+        }, k * stepMs);
+        vfdOpeningTimeoutIds.push(tid);
+      }
+
+      const endTid = setTimeout(() => {
+        vfdOpeningTimeoutIds = [];
+        isVfdOpeningPlaying = false;
+        renderCurrentTask();
+      }, digits.length * stepMs + 360);
+      vfdOpeningTimeoutIds.push(endTid);
+    }
+
     function setMeterMode(mode) {
       if (meterMode === mode) return;
       playWarmTap();
+      cancelVfdOpening();
       meterMode = mode;
       safeStorageSet('booster_meter_mode', mode);
       applyMeterModeUI();
       updateClock();
       renderCurrentTask();
+      maybeStartVfdOpening();
     }
 
     // ===== ボビン回転ドラム構築（ARVIL数字・暗色パネル近似背景＋電球バックライトオレンジ） =====
@@ -1596,7 +1627,7 @@
       }
     }
 
-    // ボビン下部：直線状 28連セグメントLEDバー構築・更新
+    // ボビン下部：直線状 28連セグメントLEDバー構築（100→65緑 ／ 60→35黄 ／ 35→0赤）
     const BOBIN_LED_COUNT = 28;
     function buildBobinLedBar() {
       const grid = document.getElementById('bobin-led-grid');
@@ -1607,8 +1638,8 @@
         cell.id = `bobin-led-cell-${i}`;
         cell.className = 'bx-led-cell';
         let color = '#00e868';
-        if (i >= 22) color = '#ff261b';
-        else if (i >= 15) color = '#ffaa00';
+        if (i >= 18) color = '#ff261b';
+        else if (i >= 10) color = '#ffdd00';
         cell.setAttribute('data-color', color);
         grid.appendChild(cell);
       }
@@ -1639,20 +1670,8 @@
       }
     }
 
-    // クラスター上部 警告灯（MAIN:赤 ／ SUB:青） ＆ 中央REM % オドメーター更新
+    // 中央REM % オドメーターおよび単位ラベル更新
     function updateBauhausClusterMeta(remainingRatio, msStr, msActive, unitMode, isRunning, isExpired, hasMain, hasSub) {
-      const setCell = (id, activeClass) => {
-        const el = document.getElementById(id);
-        if (el) el.className = `bh-ind-cell ${activeClass || ''}`;
-      };
-      setCell('bh-ind-main', hasMain ? 'bh-ind-red' : '');
-      setCell('bh-ind-sub', hasSub ? 'bh-ind-blue' : '');
-      setCell('bh-ind-run', isRunning ? 'bh-ind-green' : '');
-      setCell('bh-ind-stop', isExpired ? 'bh-ind-red' : '');
-      setCell('bh-ind-hrs', unitMode === 'hrs' ? 'bh-ind-ivory' : '');
-      setCell('bh-ind-min', unitMode === 'min' ? 'bh-ind-ivory' : '');
-      setCell('bh-ind-sec', unitMode === 'sec' ? 'bh-ind-ivory' : '');
-
       const remPct = Math.max(0, Math.min(100, Math.round(remainingRatio * 100)));
       const bobinPctLabel = document.getElementById('bobin-pct-label');
       if (bobinPctLabel) bobinPctLabel.innerText = `${remPct}%`;
@@ -2087,6 +2106,7 @@
 
     // 描画エンジン
     function renderCurrentTask() {
+      cancelVfdOpening();
       clearInterval(timerInterval);
       timerInterval = null;
       cancelAnimationFrame(timerRafId);
@@ -2574,6 +2594,7 @@
     checkAndInjectDailyRoutines();
     saveAndRefresh();
     updateNotifyButtonUI();
+    maybeStartVfdOpening();
   </script>
 </body>
 </html>
